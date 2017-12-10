@@ -5,6 +5,6 @@ ract + redux + antd
 
 ### 1.node must be install(v8.0.0 or  above).
 
-### 2.run `yarn install'.
+### 2.run ```yarn install```.
 
-### 3.run 'yarn start'
+### 3.run ```yarn start```.
