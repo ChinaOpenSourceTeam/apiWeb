@@ -1,0 +1,276 @@
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: auto;
+}
+
+header {
+    position: fixed;
+    height: 56px;
+    min-width: 800px;
+    margin-right: 15px;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+    background-color: #fff;
+    border-color: #f0f0f0;
+}
+
+article {
+    padding-top: 57px;
+    background: #fff;
+    flex-grow: 1;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    height: 56px !important;
+    padding: 0;
+    border: 1px solid #f0f0f0;
+    background-color: #fff;
+}
+
+.headerTitle {
+    display: flex;
+    align-items: center;
+    width: 100px;
+    flex-grow: 1;
+    font-size: 25px;
+    font-weight: 600;
+    padding: 0px 25px 0px 20px;
+    letter-spacing: 2px;
+    color: #ea6f5a;
+    height: 56px;
+}
+
+.mainFooter {
+    margin: 20px 0px 0px;
+    min-width: 650px;
+    background: #404040;
+    color: rgba(255, 255, 255, 0.67);
+}
+
+.headerContent {
+    display: flex;
+    flex-grow: 3;
+    justify-content: flex-start;
+    flex-direction: row;
+    margin-left: 0;
+}
+
+.headerContent ul {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    font-size: 17px;
+    color: #333;
+}
+
+@media(min-width:1440px) {
+    .searchBox {
+        width: 400px !important;
+    }
+}
+
+@media(min-width:1360px) {
+    .searchBox {
+        width: 300px !important;
+    }
+}
+
+@media(max-width:870px) {
+    .searchBox {
+        width: 100px !important;
+    }
+}
+
+ul>li {
+    margin: 0 20px;
+}
+
+.content {
+    display: flex;
+    justify-content: column;
+}
+
+.leftGrow {
+    flex-grow: 1;
+}
+
+.midContent {
+    padding: 0 20px;
+    flex-grow: 3;
+}
+
+.rightGrow {
+    flex-grow: 1;
+}
+
+.footer {
+    margin: 20px auto 0;
+    padding: 20px;
+}
+
+.infoRow1 {
+    display: flex;
+    justify-content: center;
+    padding-right: 0;
+    font-size: 13px;
+}
+
+.infoRow1 a {
+    color: rgba(255, 255, 255, 0.67);
+    margin: auto 10px;
+}
+
+.infoRow2 {
+    display: flex;
+    justify-content: center;
+    padding-right: 0;
+    color: rgba(255, 255, 255, 0.67);
+    margin: 10px auto 0;
+}
+
+.searchBox {
+    width: 100%;
+    overflow: hidden;
+}
+
+.searchBox input {
+    width: 100%;
+    padding: 0px 10px 0px 10px;
+    height: 36px;
+    font-size: 14px;
+    border: 1px solid #eee;
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
+    outline: none;
+    background: #eee;
+    transition: width .5s;
+    -moz-transition: width .5s;
+    /* -webkit-transition: width .5s; */
+    -o-transition: width .5s;
+    transition-delay: .1s;
+    -moz-transition-delay: .1s;
+    -webkit-transition-delay: .1s;
+}
+
+.searchInput {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.searchGlass {
+    align-items: center;
+    line-height: 36px;
+    vertical-align: middle;
+    padding-right: 16px;
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+    color: #969696;
+    background: #eee;
+}
+
+:global .ant-layout-header {
+    line-height: 56px;
+}
+
+.header_button {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-grow: 1;
+    width: 332px;
+    padding: 0 10px;
+}
+
+.Aa {
+    color: gray;
+    padding: 0 15px;
+    font-size: 15px;
+}
+
+.userImg {
+    border: 1px solid #eee;
+    border-radius: 50%;
+}
+
+.userSpan {
+    width: 80px;
+    height: 40px;
+    margin: auto 10px;
+}
+
+.dropFlag {
+    margin: auto 6px;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid #999;
+}
+
+.ball {
+    width: 40px;
+    height: 40px;
+    margin: 4px;
+    font-size: 20px;
+    cursor: pointer;
+    border: 1px solid #e05244;
+    border-radius: 50%;
+    color: #FFF;
+    background: #e05244;
+}
+
+:global .header_button button {
+    height: 38px;
+    width: 80px;
+    margin: 0 6px;
+    border: 1px solid rgba(236, 97, 73, .7);
+    border-radius: 20px;
+    font-size: 15px;
+}
+
+:global .header_button .acticle {
+    height: 38px;
+    width: 100px !important;
+    margin: 0 6px;
+    border: 1px solid rgba(236, 97, 73, .7);
+    border-radius: 20px;
+    font-size: 15px;
+}
+
+:global .ant-menu-horizontal>.ant-menu-item>a {
+    display: flex;
+    flex-direction: column;
+    padding-top: 15px;
+    color: rgba(0, 0, 0, 0.65);
+}
+
+ :global .ant-menu-horizontal>.ant-menu-item-selected {
+    border-bottom: 2px solid #fff !important;
+    color: #fff !important;
+}
+
+:global .ant-menu-horizontal>.ant-menu-item:hover {
+    border-bottom: 2px solid #fff !important;
+    color: #fff !important;
+}
+
+:global .ant-menu-horizontal>.ant-menu-item-active {
+    background-color: #49a9ee;
+}

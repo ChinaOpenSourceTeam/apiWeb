@@ -1,0 +1,9 @@
+:global .menu>ul {
+    width: 100%;
+    overflow-x: hidden;
+    background-color: #404040;
+}
+
+:global .menu .ant-menu-dark.ant-menu-inline .ant-menu-item-selected {
+    background-color: #5590ea;
+}

@@ -1,0 +1,42 @@
+body {
+    height: 100%;
+    overflow: atuo;
+}
+
+.login {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    /*background: url(../../../public/images/denglu.gif) no-repeat;*/
+    background-size: cover;
+}
+
+.footer {}
+
+.footerTitle {
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+.footerFont {
+    display: inline-block;
+    font-size: 13px;
+    color: white;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.formLogin {
+    position: absolute;
+    border-radius: 8px;
+    left: 50%;
+    top: 50%;
+    background: beige;
+    width: 400px;
+    height: 260px;
+    margin-left: -230px;
+    margin-top: -130px;
+}

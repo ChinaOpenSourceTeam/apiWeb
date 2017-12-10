@@ -1,0 +1,137 @@
+.formLogin {
+    width: 400px;
+    margin: 60px auto 0;
+    padding: 50px 50px 10px;
+    border-radius: 8px;
+    /* background: -webkit-linear-gradient(45deg, #ffffff, #498ee8); */
+    background: #fff;
+    box-shadow: 0 12px 24px 0 rgba(7, 17, 27, .2);
+    opacity: 1;
+}
+
+.loginForm {
+    opacity: 1;
+}
+
+.loginFormForgot {
+    float: right;
+}
+
+.loginFormButton {
+    width: 100%;
+}
+
+.header {
+    display: flex;
+    justify-content: Center;
+    align-items: Center;
+}
+
+.header a:hover {
+    color: #ea6f5a;
+    border-bottom: 2px solid #ea6f5a;
+}
+
+.hImg {
+    width: 100px;
+}
+
+.hTitle {
+    width: 300px;
+    font-size: 30px;
+    color: white;
+    text-shadow: 0 2px 2px black;
+    margin-left: 20px;
+}
+
+.title {
+    margin: 0 auto 40px;
+    padding: 0 10px;
+    font-weight: 400;
+    color: #969696;
+    font-size: 18px;
+}
+
+.title b {
+    padding: 10px;
+}
+
+.box {
+    position: relative;
+    margin-top: 30px;
+    padding: 20px 30px;
+    border-top: 1px solid #cccccc;
+    /* border-radius: 2px; */
+}
+
+.box::before {
+    content: attr(title);
+    position: absolute;
+    padding: 2px 20px;
+    color: #b5b5b5;
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    -webkit-transform: translate(57%, -150%);
+    background-color: #fff;
+}
+
+:global .reg_btn .ant-btn-primary {
+    padding: 0 15px;
+    font-size: 14px;
+    border-radius: 4px;
+    height: 32px;
+    color: #fff;
+    background-color: #42c02e !important;
+    border-color: #42c02e !important;
+}
+
+.login a:hover {
+    color: #ea6f5a;
+    border-bottom: 2px solid #ea6f5a;
+}
+
+.iconLogo {
+    display: flex;
+    justify-content: center;
+}
+
+.iconLogo div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* position: absolute; */
+    width: 50px;
+    height: 50px;
+    margin: 4px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.ball1 {
+    border: 1px solid #e05244;
+    border-radius: 50%;
+    color: #FFF;
+    background: #e05244;
+}
+
+.ball2 {
+    border: 1px solid #00bb29;
+    border-radius: 100%;
+    color: #FFF;
+    background: #00bb29;
+}
+
+.ball3 {
+    border: 1px solid #498ad5;
+    border-radius: 50%;
+    color: #FFF;
+    background: #498ad5;
+}
+
+.ball4 {
+    font-size: 10px !important;
+    border: 1px solid hsla(0, 0%, 71%, .2);
+    border-radius: 100%;
+    color: #bfbfbf;
+    background: hsla(0, 0%, 71%, .2);
+}
