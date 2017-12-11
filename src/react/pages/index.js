@@ -112,10 +112,10 @@ export class mainPage extends React.Component {
                                     <img src={user} alt="" className={styles.userImg} />
                                     <span className={styles.dropFlag}></span>
                                     <ul className={styles.dropMenu}>
-                                        <li>我的主页</li>
-                                        <li>收藏文章</li>
-                                        <li>设置</li>
-                                        <li>退出</li>
+                                        <li><span>我的主页</span></li>
+                                        <li><span>收藏文章</span></li>
+                                        <li><span>设置</span></li>
+                                        <li><span>退出</span></li>
                                     </ul>
                                 </span>}
                             <Button type="danger" className="acticle"><i className="fa fa-pencil"></i> 写文章</Button>

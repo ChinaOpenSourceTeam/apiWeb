@@ -99,7 +99,7 @@ article {
     }
 }
 
-ul>li {
+.headerContent ul>li {
     margin: 0 20px;
 }
 
@@ -213,7 +213,8 @@ ul>li {
 
 .userSpan {
     width: 80px;
-    height: 40px;
+    height: 56px;
+    line-height: 56px;
     margin: auto 10px;
 }
 
@@ -223,6 +224,11 @@ ul>li {
 
 .userSpan:hover ul {
     display: block !important;
+}
+
+.userSpan .dropMenu {
+    left: auto;
+    border-radius: 0px 0px 4px 4px;
 }
 
 .dropFlag {
@@ -242,7 +248,7 @@ ul>li {
     float: left;
     min-width: 160px;
     padding: 5px 0;
-    margin: 2px 0 0;
+    margin: 0;
     list-style: none;
     font-size: 14px;
     text-align: left;
@@ -250,8 +256,19 @@ ul>li {
     border: 1px solid #ccc;
     border: 1px solid rgba(0, 0, 0, .15);
     border-radius: 4px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 8px;
     background-clip: padding-box;
+    filter: drop-shadow(rgba(0, 0, 0, 0.1) 0px 2px 8px);
+    border-color: transparent;
+}
+
+.dropMenu ul>li {
+    line-height: 20px !important;
+    padding: 8px 6px !important;
+}
+
+.dropMenu li:hover {
+    background: #f0f0f0;
 }
 
 .ball {
