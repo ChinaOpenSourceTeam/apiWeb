@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 import { Layout } from 'antd';
-import { qsMenu, analysisMenu, deviceMenu, reportMenu, systemMenu } from '../../utils/menu';
+import { systemMenu } from '../../utils/menu';
 import Login from '../../react/pages/login';
 import mainPage from '../../react/pages';
 

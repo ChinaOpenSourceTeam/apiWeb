@@ -67,20 +67,19 @@ export class mainPage extends React.Component {
         window.addEventListener('unload', this.handleUnload);
     }
 
-    componentWillUnmount(){
-         window.removeEventListener('unload', this.handleUnload);        
+    componentWillUnmount() {
+        window.removeEventListener('unload', this.handleUnload);
     }
 
-    handleUnload(){
-        localStorage.removeItem('username');
-     }
+    handleUnload() {
+        // localStorage.removeItem('username');
+    }
 
     loginOpt = (e) => {
 
     }
 
     render() {
-        debugger;
         let userName = localStorage.getItem('username');
 
         return (
@@ -101,7 +100,7 @@ export class mainPage extends React.Component {
                                 </div></li>
                             </ul>
                         </div>
-                        <div className="header_button" style={{display:'flex',alignItems:'center'}}>
+                        <div className="header_button" style={{ display: 'flex', alignItems: 'center' }}>
                             <a className={styles.Aa}>Aa</a>
                             {!userName ?
                                 <span>
@@ -110,8 +109,14 @@ export class mainPage extends React.Component {
                                         <span>注册</span></Link></Button>
                                 </span>
                                 : <span className={styles.userSpan}>
-                                    <img src={user} alt="" className={styles.userImg}/>
+                                    <img src={user} alt="" className={styles.userImg} />
                                     <span className={styles.dropFlag}></span>
+                                    <ul className={styles.dropMenu}>
+                                        <li>我的主页</li>
+                                        <li>收藏文章</li>
+                                        <li>设置</li>
+                                        <li>退出</li>
+                                    </ul>
                                 </span>}
                             <Button type="danger" className="acticle"><i className="fa fa-pencil"></i> 写文章</Button>
                         </div>

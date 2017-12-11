@@ -36,7 +36,6 @@ class LoginF extends React.Component {
     }
      
     componentWillReceiveProps(nextProps) {
-        debugger;
         if (this.state.loading) {
             ///登录成功
             if (nextProps.loginRet === 0) {
@@ -44,7 +43,7 @@ class LoginF extends React.Component {
                 nextProps.history.push(nextProps.location);
 
                 // //请求数据字典
-                this.props.querySysdic();
+                // this.props.querySysdic();
 
             } else {
                 this.setState({ loading: false, loginFlag: nextProps.loginRet });
@@ -88,7 +87,6 @@ class LoginF extends React.Component {
     }
 
     render() {
-        debugger;
         const { getFieldDecorator } = this.props.form;
         let activeStyle = {
             padding: '10px',
