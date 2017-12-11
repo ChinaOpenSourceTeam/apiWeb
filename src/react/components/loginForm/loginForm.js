@@ -43,6 +43,7 @@ class LoginF extends React.Component {
                 nextProps.history.push(nextProps.location);
 
                 // //请求数据字典
+                // this.props.querySysdic();
 
             } else {
                 this.setState({ loading: false, loginFlag: nextProps.loginRet });
