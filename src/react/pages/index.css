@@ -212,6 +212,8 @@ article {
 }
 
 .userSpan {
+    display: flex;
+    align-items: center;
     width: 80px;
     height: 56px;
     line-height: 56px;
@@ -262,13 +264,31 @@ article {
     border-color: transparent;
 }
 
-.dropMenu ul>li {
-    line-height: 20px !important;
-    padding: 8px 6px !important;
+.dropMenu li {
+    display: flex;
+    align-items: center;
+    line-height: 48px !important;
+    /*padding: 8px 6px !important;*/
 }
 
 .dropMenu li:hover {
     background: #f0f0f0;
+}
+
+
+/*.dropMenu li>a {
+    color: #ea6f5a !important;
+}*/
+
+.dropMenu li>a>i {
+    margin: 0 20px;
+    font-size: 18px;
+    color: #ea6f5a !important;
+}
+
+.dropMenu li>a>span {
+    font-size: 12px;
+    color: #333;
 }
 
 .ball {

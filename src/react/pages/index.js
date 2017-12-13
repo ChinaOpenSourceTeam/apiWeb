@@ -72,7 +72,7 @@ export class mainPage extends React.Component {
     }
 
     handleUnload() {
-        // localStorage.removeItem('username');
+        localStorage.removeItem('username');
     }
 
     loginOpt = (e) => {
@@ -112,10 +112,11 @@ export class mainPage extends React.Component {
                                     <img src={user} alt="" className={styles.userImg} />
                                     <span className={styles.dropFlag}></span>
                                     <ul className={styles.dropMenu}>
-                                        <li><span>我的主页</span></li>
-                                        <li><span>收藏文章</span></li>
-                                        <li><span>设置</span></li>
-                                        <li><span>退出</span></li>
+                                        <li><a><i className="fa fa-user" aria-hidden="true"></i><span>我的主页</span></a></li>
+                                        <li><a><i className="fa fa-bookmark" aria-hidden="true"></i><span>收藏的文章</span></a></li>
+                                        <li><a><i className="fa fa-heart" aria-hidden="true"></i><span>喜欢的文章</span></a></li>
+                                        <li><a><i className="fa fa-cog" aria-hidden="true"></i><span>设置</span></a></li>
+                                        <li><a onClick={this.logOut}><i className="fa fa-sign-out" aria-hidden="true"></i><span>退出</span></a></li>
                                     </ul>
                                 </span>}
                             <Button type="danger" className="acticle"><i className="fa fa-pencil"></i> 写文章</Button>
@@ -200,7 +201,8 @@ export class mainPage extends React.Component {
     }
 
     logOut() {
-        this.props.history.push('/login');
+        localStorage.removeItem('username');        
+        this.props.history.push('/');
     }
 }
 
