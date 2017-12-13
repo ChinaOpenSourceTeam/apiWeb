@@ -275,10 +275,10 @@ article {
     background: #f0f0f0;
 }
 
-
-/*.dropMenu li>a {
-    color: #ea6f5a !important;
-}*/
+.dropMenu li>a {
+    width: 100%;
+    /*color: #ea6f5a !important;*/
+}
 
 .dropMenu li>a>i {
     margin: 0 20px;
