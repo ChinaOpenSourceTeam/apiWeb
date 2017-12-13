@@ -13,7 +13,7 @@ import { connect } from 'react-redux';
 import { Button, Icon, Layout, message, Select } from 'antd';
 import { Link } from 'react-router-dom';
 import logo from '../../public/images/theme_logo.svg';
-import user from '../../public/images/uservip.png';
+import user from '../../public/images/vip.png';
 import * as act from '../../redux/actions/login';
 import { MainMenu } from '../../utils/menu';
 import { SideRoute, ContentRoute } from '../routes'
