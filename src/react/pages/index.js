@@ -75,10 +75,6 @@ export class mainPage extends React.Component {
         localStorage.removeItem('username');
     }
 
-    loginOpt = (e) => {
-
-    }
-
     render() {
         let userName = localStorage.getItem('username');
 
@@ -88,17 +84,26 @@ export class mainPage extends React.Component {
                     <div className={styles.header}>
                         <a className={styles.headerTitle}>雕虫</a>
                         <div className={styles.headerContent}>
-                            <ul>
+                            {!userName ? (<ul>
                                 <li><i className="fa fa-compass"></i> 首页</li>
                                 <li><i className="fa fa-mobile" aria-hidden="true"></i> 下载APP</li>
                                 <li><div className={styles.searchBox} >
                                     <div style={{ display: 'flex' }}>
                                         <input type="text" placeholder="你想要的..." />
                                         <a href="" className={styles.searchGlass}><i className="fa fa-search" aria-hidden="true"></i></a>
-
                                     </div>
                                 </div></li>
-                            </ul>
+                            </ul>) : (<ul>
+                                <li>发现</li>
+                                <li>关注</li>
+                                <li>消息</li>
+                                <li><div className={styles.searchBox} >
+                                    <div style={{ display: 'flex' }}>
+                                        <input type="text" placeholder="你想要的..." />
+                                        <a href="" className={styles.searchGlass}><i className="fa fa-search" aria-hidden="true"></i></a>
+                                    </div>
+                                </div></li>
+                            </ul>)}
                         </div>
                         <div className="header_button" style={{ display: 'flex', alignItems: 'center' }}>
                             <a className={styles.Aa}>Aa</a>
@@ -201,7 +206,7 @@ export class mainPage extends React.Component {
     }
 
     logOut() {
-        localStorage.removeItem('username');        
+        localStorage.removeItem('username');
         this.props.history.push('/');
     }
 }
