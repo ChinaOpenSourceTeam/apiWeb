@@ -30,7 +30,8 @@ export class mainPage extends React.Component {
         super(props);
         this.state = {
             userName: '',
-            id: ''
+            id: '',
+            miniDropMenu:false
         };
         this.logOut = this.logOut.bind(this);
     }
@@ -75,8 +76,27 @@ export class mainPage extends React.Component {
         localStorage.removeItem('username');
     }
 
+    showHeadBar = () => {
+        debugger;
+        let _self = this;
+        this.setState({miniDropMenu:!_self.state.miniDropMenu});
+    }
+
     render() {
         let userName = localStorage.getItem('username');
+
+        const miniDropMenu = (
+            <ul className={styles.miniDropMenuList}>
+                <li><i className="fa fa-compass"></i> 首页</li>
+                <li><i className="fa fa-mobile" aria-hidden="true"></i> 下载APP</li>
+                <li><div className={styles.searchBox} >
+                    <div style={{ display: 'flex' }}>
+                        <input type="text" placeholder="你想要的..." />
+                        <a href="" className={styles.searchGlass}><i className="fa fa-search" aria-hidden="true"></i></a>
+                    </div>
+                </div></li>
+            </ul>)
+
 
         return (
             <section>
@@ -104,6 +124,14 @@ export class mainPage extends React.Component {
                                     </div>
                                 </div></li>
                             </ul>)}
+                        </div>
+                        <div className={styles.headBar}>
+                            <Button href="" onClick={this.showHeadBar.bind(this)}>
+                                <span style={{fontSize:16}}>
+                                    <i className="fa fa-bars" aria-hidden="true"></i>
+                                    {this.state.miniDropMenu?miniDropMenu:null}
+                                </span>
+                            </Button>
                         </div>
                         <div className="header_button" style={{ display: 'flex', alignItems: 'center' }}>
                             <a className={styles.Aa}>Aa</a>
