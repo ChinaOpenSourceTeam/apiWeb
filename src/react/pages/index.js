@@ -16,7 +16,7 @@ import logo from '../../public/images/theme_logo.svg';
 import user from '../../public/images/vip.png';
 import * as act from '../../redux/actions/login';
 import { MainMenu } from '../../utils/menu';
-import { SideRoute, ContentRoute } from '../routes'
+import { HeaderRoute, ContentRoute } from '../routes'
 import styles from './index.css'
 const { Header, Sider, Content, Footer } = Layout;
 
@@ -77,7 +77,6 @@ export class mainPage extends React.Component {
     }
 
     showHeadBar = () => {
-        debugger;
         let _self = this;
         this.setState({ miniDropMenu: !_self.state.miniDropMenu });
     }
@@ -87,8 +86,8 @@ export class mainPage extends React.Component {
 
         const miniDropMenu = (
             <ul className={styles.miniDropMenuList}>
-                <li><i className="fa fa-compass"></i> 首页</li>
-                <li><i className="fa fa-mobile" aria-hidden="true"></i> 下载APP</li>
+                <li><i className="fa fa-compass"></i><Link to="/" className={styles.Aa} onClick={this.loginOpt}>首页</Link> </li>
+                <li><i className="fa fa-mobile" aria-hidden="true"></i><Link to="/main/downloadApp" className={styles.Aa} onClick={this.loginOpt}>下载APP</Link></li>
                 <li><div className={styles.searchBox} >
                     <div style={{ display: 'flex' }}>
                         <input type="text" placeholder="你想要的..." />
@@ -104,8 +103,8 @@ export class mainPage extends React.Component {
                         <a className={styles.headerTitle}>雕虫</a>
                         <div className={styles.headerContent}>
                             {!userName ? (<ul>
-                                <li><i className="fa fa-compass"></i> 首页</li>
-                                <li><i className="fa fa-mobile" aria-hidden="true"></i> 下载APP</li>
+                                <li><i className="fa fa-compass"></i> <Link to="/main">首页</Link></li>
+                                <li><i className="fa fa-mobile" aria-hidden="true"></i> <Link to="/main/downloadApp">下载APP</Link></li>
                                 <li><div className={styles.searchBox} >
                                     <div style={{ display: 'flex' }}>
                                         <input type="text" placeholder="你想要的..." />
@@ -113,9 +112,9 @@ export class mainPage extends React.Component {
                                     </div>
                                 </div></li>
                             </ul>) : (<ul>
-                                <li>发现</li>
-                                <li>关注</li>
-                                <li>消息</li>
+                                <li><Link to="/main/discover">发现</Link></li>
+                                <li><Link to="/main/forks">关注</Link></li>
+                                <li><Link to="/main/message">消息</Link></li>
                                 <li><div className={styles.searchBox} >
                                     <div style={{ display: 'flex' }}>
                                         <input type="text" placeholder="你想要的..." />
@@ -151,7 +150,7 @@ export class mainPage extends React.Component {
                                         <li><a onClick={this.logOut}><i className="fa fa-sign-out" aria-hidden="true"></i><span>退出</span></a></li>
                                     </ul>
                                 </span>}
-                            <Button type="danger" className="acticle"><i className="fa fa-pencil"></i> 写文章</Button>
+                            <Button type="danger" className="acticle"><i className="fa fa-pencil"></i><Link to="/main/writeAticle" className={styles.Aa} onClick={this.loginOpt}>写文章</Link></Button>
                         </div>
                     </div>
                 </header>
@@ -159,7 +158,8 @@ export class mainPage extends React.Component {
                     <div className={styles.content}>
                         <div className={styles.leftGrow}></div>
                         <div id="content" className={styles.midContent}>
-                            <h1>上方固定，下方自适应</h1>
+                            <HeaderRoute />
+                            {/*<h1>上方固定，下方自适应</h1>
                             <p>上方固定，下方自适应</p>
                             <p>上方固定，下方自适应</p>
                             <p>上方固定，下方自适应</p>
@@ -201,10 +201,12 @@ export class mainPage extends React.Component {
                             <p>上方固定，下方自适应</p>
                             <p>上方固定，下方自适应</p>
                             <p>上方固定，下方自适应</p>
-                            <p>上方固定，下方自适应</p>
+                            <p>上方固定，下方自适应</p>*/}
                         </div>
-                        <div className={styles.rightGrow}></div>
+                        <div className={styles.rightGrow}>
+                        </div>
                     </div>
+
                 </article>
                 <footer className={styles.mainFooter}>
                     <div className={styles.footer}>

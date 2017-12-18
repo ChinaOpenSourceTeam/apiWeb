@@ -27,8 +27,8 @@ export default class Routes extends Component {
                         <div className="listen"></div>
                         <Switch>
                             <Route path="/login" component={Login} />
-                            <Route exact strict path="/" component={mainPage} />
-                            <Redirect from='*' to='/' />
+                            <Route exact strict path="/main" component={mainPage} />
+                            <Redirect from='*' to='/main' />
                         </Switch>
                     </div>
                 </BrowserRouter>
@@ -36,3 +36,19 @@ export default class Routes extends Component {
         )
     }
 };
+
+export class HeaderRoute extends React.Component {
+
+    render() {
+        return (
+            <Content style={{width:'100%',height:'100%',overflow:'auto'}} className="menu">            
+                <Route path="/main/downloadApp" component={test} />
+                <Route path="/main/discover" component={test} />
+                <Route path="/main/forks" component={test} />
+                <Route path="/main/message" component={test}/>
+                <Route path="/main/writeAticle" component={test}/>
+                <Route path="/main" component={test} />
+            </Content>
+        );
+    }
+}
