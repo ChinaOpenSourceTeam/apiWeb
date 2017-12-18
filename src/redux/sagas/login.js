@@ -25,7 +25,7 @@ function* loginSubmit(action) {
                 yield put(act.loginFail());
             else {
                 localStorage.setItem('access_token',response.data.data.token || '');
-                localStorage.setItem('username',response.data.data.token || '');
+                localStorage.setItem('username',response.data.data.user.loginName || '');
                 yield put(act.loginSuccess(response.data.data));    
             }
         }

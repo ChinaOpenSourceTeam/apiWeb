@@ -10,15 +10,11 @@
 
 import axios from 'axios';
 import { config } from './config';
-import qs from 'qs';
-axios.defaults.headers.common['Authorization'] = localStorage.getItem('access_token');
 
 export const dataService = {
     postRequest: (params) => {
         return new Promise(function (resolve, reject) {
-            const access_token = localStorage.getItem('access_token');
-            const username = localStorage.getItem('username');
-            axios.post(params.reqUrl + '?access_token=' + access_token + '&username=' + username, params.reqParam, config)
+            axios.post(params.reqUrl, params.reqParam, config)
                 .then(function (res) {
                     resolve(res);
                 })
@@ -29,9 +25,7 @@ export const dataService = {
     },
     getRequest: (params) => {
         return new Promise(function (resolve, reject) {
-            const access_token = localStorage.getItem('access_token');
-            const username = localStorage.getItem('username');
-            axios.get(params.reqUrl + '?access_token=' + access_token + '&username=' + username, config)
+            axios.get(params.reqUrl, config)
                 .then(function (res) {
                     resolve(res);
                 })

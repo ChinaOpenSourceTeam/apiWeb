@@ -12,11 +12,12 @@ import React from 'react';
 import styles from './loginForm.css';
 // import logImg from "../../../public/images/landun_logo.png";
 import logImg from "../../../idea_large.svg";
-import { Form, Icon, Input, Button, Checkbox, Tooltip ,message} from 'antd';
-import {config} from '../../../utils/config'
+import { Form, Icon, Input, Button, Checkbox, Tooltip, message } from 'antd';
+import { config } from '../../../utils/config'
 import axios from 'axios';
 const FormItem = Form.Item;
 
+axios.defaults.headers.common['Authorization'] = localStorage.getItem('access_token');
 
 class LoginF extends React.Component {
     constructor(props) {
@@ -30,7 +31,7 @@ class LoginF extends React.Component {
         //this.handleSubmit=this.handleSubmit.bind(this);
     }
     componentDidMount() {
-        if (this.props.location.state.opt) {
+        if (this.props.location.state && this.props.location.state.opt) {
             let opt = true;
             this.props.location.state.opt == 'login' ? opt = true : opt = false;
             this.setState({ loginTable: opt });
@@ -48,20 +49,19 @@ class LoginF extends React.Component {
 
                 // //请求数据字典
                 // this.props.querySysdic();
-
-                const access_token = localStorage.getItem('access_token');
-                const username = localStorage.getItem('username');
-                axios.get('/system/user/findUserByLoginName?loginName='+'liqiwei', config)
-                    .then(function (res) {
-                        if(res.data.code==0){
-                            message.success('请求成功！')
-                        }else{
-                            message.success('请求失败！')
-                        }
-                    })
-                    .catch(function (err) {
-                        message.success('请求失败！')
-                    })
+                console.log(localStorage.getItem('access_token'));
+                // axios.get('/system/user/findUserByLoginName?loginName=' + 'liqiwei', config)
+                //     .then(function (res) {
+                //         debugger;
+                //         if (res.data.code == 0) {
+                //             message.success('请求成功！')
+                //         } else {
+                //             message.error('请求失败！')
+                //         }
+                //     })
+                //     .catch(function (err) {
+                //         message.success('请求失败！')
+                //     })
 
             } else {
                 this.setState({ loading: false, loginFlag: nextProps.loginRet });

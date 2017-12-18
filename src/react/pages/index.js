@@ -31,7 +31,7 @@ export class mainPage extends React.Component {
         this.state = {
             userName: '',
             id: '',
-            miniDropMenu:false
+            miniDropMenu: false
         };
         this.logOut = this.logOut.bind(this);
     }
@@ -79,7 +79,7 @@ export class mainPage extends React.Component {
     showHeadBar = () => {
         debugger;
         let _self = this;
-        this.setState({miniDropMenu:!_self.state.miniDropMenu});
+        this.setState({ miniDropMenu: !_self.state.miniDropMenu });
     }
 
     render() {
@@ -96,7 +96,6 @@ export class mainPage extends React.Component {
                     </div>
                 </div></li>
             </ul>)
-
 
         return (
             <section>
@@ -127,9 +126,9 @@ export class mainPage extends React.Component {
                         </div>
                         <div className={styles.headBar}>
                             <Button href="" onClick={this.showHeadBar.bind(this)}>
-                                <span style={{fontSize:16}}>
+                                <span style={{ fontSize: 16 }}>
                                     <i className="fa fa-bars" aria-hidden="true"></i>
-                                    {this.state.miniDropMenu?miniDropMenu:null}
+                                    {this.state.miniDropMenu ? miniDropMenu : null}
                                 </span>
                             </Button>
                         </div>
@@ -142,7 +141,7 @@ export class mainPage extends React.Component {
                                         <span>注册</span></Link></Button>
                                 </span>
                                 : <span className={styles.userSpan}>
-                                    <img src={user} alt="" className={styles.userImg} />
+                                    {<img src={user} alt="" className={styles.userImg} />}
                                     <span className={styles.dropFlag}></span>
                                     <ul className={styles.dropMenu}>
                                         <li><a><i className="fa fa-user" aria-hidden="true"></i><span>我的主页</span></a></li>

@@ -9,7 +9,6 @@ import LoginForm from '../../components/loginForm/loginForm';
 
 class Login extends React.Component {
     componentWillReceiveProps(nextProps) {
-        debugger;
         if (nextProps.msgTip !== this.props.msgTip) {
             message.error(nextProps.msgTip);
         }
