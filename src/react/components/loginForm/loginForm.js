@@ -12,8 +12,11 @@ import React from 'react';
 import styles from './loginForm.css';
 // import logImg from "../../../public/images/landun_logo.png";
 import logImg from "../../../idea_large.svg";
-import { Form, Icon, Input, Button, Checkbox, Tooltip } from 'antd';
+import { Form, Icon, Input, Button, Checkbox, Tooltip ,message} from 'antd';
+import {config} from '../../../utils/config'
+import axios from 'axios';
 const FormItem = Form.Item;
+
 
 class LoginF extends React.Component {
     constructor(props) {
@@ -34,16 +37,31 @@ class LoginF extends React.Component {
         }
 
     }
-     
+
     componentWillReceiveProps(nextProps) {
         if (this.state.loading) {
             ///登录成功
+            debugger;
             if (nextProps.loginRet === 0) {
                 nextProps.location.pathname = '/main';
                 nextProps.history.push(nextProps.location);
 
                 // //请求数据字典
                 // this.props.querySysdic();
+
+                const access_token = localStorage.getItem('access_token');
+                const username = localStorage.getItem('username');
+                axios.get('/system/user/findUserByLoginName?loginName='+'liqiwei', config)
+                    .then(function (res) {
+                        if(res.data.code==0){
+                            message.success('请求成功！')
+                        }else{
+                            message.success('请求失败！')
+                        }
+                    })
+                    .catch(function (err) {
+                        message.success('请求失败！')
+                    })
 
             } else {
                 this.setState({ loading: false, loginFlag: nextProps.loginRet });
@@ -57,7 +75,7 @@ class LoginF extends React.Component {
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 let param = {
-                    username: values.userName,
+                    loginName: values.loginName,
                     password: values.password
                 };
                 this.setState({ loading: true, loginFlag: 0 });
@@ -71,7 +89,7 @@ class LoginF extends React.Component {
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 let param = {
-                    username: values.userName,
+                    loginName: values.loginName,
                     password: values.password
                 };
                 this.setState({ loading: true, loginFlag: 0 });
@@ -118,7 +136,7 @@ class LoginF extends React.Component {
                 {this.state.loginTable
                     ? <Form onSubmit={this.handleLoginSubmit} className={styles.loginForm}>
                         <FormItem >
-                            {getFieldDecorator('userName', {
+                            {getFieldDecorator('loginName', {
                                 rules: [{
                                     required: true,
                                     message: '请输入用户名!'

@@ -20,15 +20,16 @@ function* loginSubmit(action) {
         debugger;
         //处理返回结果
         if (response) {
-            if (response.data.ret === 0)
+            debugger;
+            if (response.data.code !== 0)
                 yield put(act.loginFail());
             else {
-                localStorage.setItem('access_token',response.data.token || '');
-                localStorage.setItem('username',response.data.userData[0].username || '');
-                yield put(act.loginSuccess(response.data.userData[0]));
+                localStorage.setItem('access_token',response.data.data.token || '');
+                localStorage.setItem('username',response.data.data.token || '');
+                yield put(act.loginSuccess(response.data.data));    
             }
         }
-    } catch (error) {
+    } catch (error) {   
         //处理异常
         yield put(actMsg.optFail(error.message));
     }
