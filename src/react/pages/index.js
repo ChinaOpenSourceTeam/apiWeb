@@ -160,7 +160,6 @@ export class mainPage extends React.Component {
                         <div className={styles.leftGrow}></div>
                         <div id="content" className={styles.midContent}>
                             <HeaderRoute />
-                            {this.props.children || HomePage}
                             {/*<h1>上方固定，下方自适应</h1>
                             <p>上方固定，下方自适应</p>
                             <p>上方固定，下方自适应</p>

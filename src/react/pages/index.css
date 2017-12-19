@@ -6,6 +6,7 @@ body {
 body {
     margin: 0;
     padding: 0;
+    overflow-y: scroll;
 }
 
 section {
@@ -19,7 +20,6 @@ header {
     position: fixed;
     height: 56px;
     min-width: 800px;
-    margin-right: 15px;
     right: 0;
     left: 0;
     z-index: 1030;
@@ -121,13 +121,12 @@ article {
     color: #333 !important;
 }
 
-
-/* .headerContent ul>li :hover {
+.headerContent ul>li :hover {
     background: #f0f0f0 !important;
-    ;
-} */
+}
 
-.headerContent ul>li :active {
+.headerContent ul>li :focus {
+    text-decoration: none;
     color: #ea6f5a !important;
 }
 
@@ -137,16 +136,16 @@ article {
 }
 
 .leftGrow {
-    flex-grow: 1;
+    flex-grow: 2;
 }
 
 .midContent {
     padding: 0 20px;
-    flex-grow: 3;
+    flex-grow: 0;
 }
 
 .rightGrow {
-    flex-grow: 1;
+    flex-grow: 2;
 }
 
 .footer {
