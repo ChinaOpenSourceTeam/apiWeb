@@ -15,7 +15,7 @@ import { Link } from 'react-router-dom';
 import logo from '../../public/images/theme_logo.svg';
 import user from '../../public/images/vip.png';
 import * as act from '../../redux/actions/login';
-import { MainMenu } from '../../utils/menu';
+// import { MainMenu } from '../../utils/menu';
 import { HeaderRoute, ContentRoute } from '../routes'
 import styles from './index.css'
 const { Header, Sider, Content, Footer } = Layout;
@@ -83,11 +83,12 @@ export class mainPage extends React.Component {
 
     render() {
         let userName = localStorage.getItem('username');
+        const HomePage = () => <div>Home Page</div>
 
         const miniDropMenu = (
             <ul className={styles.miniDropMenuList}>
-                <li><i className="fa fa-compass"></i><Link to="/" className={styles.Aa} onClick={this.loginOpt}>首页</Link> </li>
-                <li><i className="fa fa-mobile" aria-hidden="true"></i><Link to="/main/downloadApp" className={styles.Aa} onClick={this.loginOpt}>下载APP</Link></li>
+                <li><i className="fa fa-compass"></i><Link to="/main" className={styles.Aa} onClick={this.loginOpt}>首页</Link> </li>
+                <li><i className="fa fa-mobile" aria-hidden="true"></i><Link to="/downloadApp" className={styles.Aa} onClick={this.loginOpt}>下载APP</Link></li>
                 <li><div className={styles.searchBox} >
                     <div style={{ display: 'flex' }}>
                         <input type="text" placeholder="你想要的..." />
@@ -102,9 +103,9 @@ export class mainPage extends React.Component {
                     <div className={styles.header}>
                         <a className={styles.headerTitle}>雕虫</a>
                         <div className={styles.headerContent}>
-                            {!userName ? (<ul>
-                                <li><i className="fa fa-compass"></i> <Link to="/main">首页</Link></li>
-                                <li><i className="fa fa-mobile" aria-hidden="true"></i> <Link to="/main/downloadApp">下载APP</Link></li>
+                            {!userName ? (<ul style={{color:'#333 !important'}}>
+                                <li><Link to="/main" style={{color:'#333'}}><i className="fa fa-compass"></i> 首页</Link></li>
+                                <li> <Link to="/downloadApp" style={{color:'#333'}}><i className="fa fa-mobile" aria-hidden="true"></i>下载APP</Link></li>
                                 <li><div className={styles.searchBox} >
                                     <div style={{ display: 'flex' }}>
                                         <input type="text" placeholder="你想要的..." />
@@ -112,9 +113,9 @@ export class mainPage extends React.Component {
                                     </div>
                                 </div></li>
                             </ul>) : (<ul>
-                                <li><Link to="/main/discover">发现</Link></li>
-                                <li><Link to="/main/forks">关注</Link></li>
-                                <li><Link to="/main/message">消息</Link></li>
+                                <li><Link to="/discover" style={{color:'#333'}}>发现</Link></li>
+                                <li><Link to="/forks" style={{color:'#333'}}>关注</Link></li>
+                                <li><Link to="/message" style={{color:'#333'}}>消息</Link></li>
                                 <li><div className={styles.searchBox} >
                                     <div style={{ display: 'flex' }}>
                                         <input type="text" placeholder="你想要的..." />
@@ -150,7 +151,7 @@ export class mainPage extends React.Component {
                                         <li><a onClick={this.logOut}><i className="fa fa-sign-out" aria-hidden="true"></i><span>退出</span></a></li>
                                     </ul>
                                 </span>}
-                            <Button type="danger" className="acticle"><i className="fa fa-pencil"></i><Link to="/main/writeAticle" className={styles.Aa} onClick={this.loginOpt}>写文章</Link></Button>
+                            <Button type="danger" className="acticle"><i className="fa fa-pencil"></i><Link to="/writeAticle" className={styles.Aa} onClick={this.loginOpt}>写文章</Link></Button>
                         </div>
                     </div>
                 </header>
@@ -159,6 +160,7 @@ export class mainPage extends React.Component {
                         <div className={styles.leftGrow}></div>
                         <div id="content" className={styles.midContent}>
                             <HeaderRoute />
+                            {this.props.children || HomePage}
                             {/*<h1>上方固定，下方自适应</h1>
                             <p>上方固定，下方自适应</p>
                             <p>上方固定，下方自适应</p>

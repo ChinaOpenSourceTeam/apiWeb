@@ -14,7 +14,13 @@ import test from '../../react/pages/testPage'
 import Store from '../../redux';
 import './index.css';
 const store = Store();
-const {Content } = Layout;
+const { Content } = Layout;
+
+const HomePage = () => <div>Home Page</div>
+const DownloadApp = () => <div>DownloadApp Page</div>
+const Discover = () => <div>Discover Page</div>
+const Fork = () => <div>Fork Page</div>
+
 export default class Routes extends Component {
     componentDidMount() {
 
@@ -27,8 +33,8 @@ export default class Routes extends Component {
                         <div className="listen"></div>
                         <Switch>
                             <Route path="/login" component={Login} />
-                            <Route exact strict path="/main" component={mainPage} />
-                            <Redirect from='*' to='/main' />
+                            <Route path="/" component={mainPage} />
+                            <Redirect from='*' to='/' />
                         </Switch>
                     </div>
                 </BrowserRouter>
@@ -41,13 +47,15 @@ export class HeaderRoute extends React.Component {
 
     render() {
         return (
-            <Content style={{width:'100%',height:'100%',overflow:'auto'}} className="menu">            
-                <Route path="/main/downloadApp" component={test} />
-                <Route path="/main/discover" component={test} />
-                <Route path="/main/forks" component={test} />
-                <Route path="/main/message" component={test}/>
-                <Route path="/main/writeAticle" component={test}/>
-                <Route path="/main" component={test} />
+            <Content style={{ width: '100%', height: '100%', overflow: 'auto' }} className="menu">
+                <Switch>
+                    <Route path="/downloadApp" component={DownloadApp} />
+                    <Route path="/discover" component={Discover} />
+                    <Route path="/forks" component={Fork} />
+                    <Route path="/message" component={test} />
+                    <Route path="/writeAticle" component={test} />
+                    <Route component={HomePage} />
+                </Switch>
             </Content>
         );
     }

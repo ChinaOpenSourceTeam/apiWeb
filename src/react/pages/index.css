@@ -118,6 +118,17 @@ article {
 
 .headerContent ul>li {
     margin: 0 20px;
+    color: #333 !important;
+}
+
+
+/* .headerContent ul>li :hover {
+    background: #f0f0f0 !important;
+    ;
+} */
+
+.headerContent ul>li :active {
+    color: #ea6f5a !important;
 }
 
 .content {

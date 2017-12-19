@@ -42,9 +42,8 @@ class LoginF extends React.Component {
     componentWillReceiveProps(nextProps) {
         if (this.state.loading) {
             ///登录成功
-            debugger;
             if (nextProps.loginRet === 0) {
-                nextProps.location.pathname = '/main';
+                nextProps.location.pathname = '/mian';
                 nextProps.history.push(nextProps.location);
 
                 // //请求数据字典

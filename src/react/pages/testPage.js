@@ -24,12 +24,7 @@ class TestPage extends Component {
     render() {
         return (
             <div style={{height:'100%'}}>
-                <Button type="danger"   onClick={this.sf}>
-                    操作成功112
-                </Button>
-                <Button type="danger"   onClick={this.ff}>
-                    操作失败
-                </Button>
+                test page
             </div>
         )
     }
