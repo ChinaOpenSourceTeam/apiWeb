@@ -1,6 +1,10 @@
 import React from 'react';
 import { Carousel } from 'antd';
 import styles from './carousel.css';
+import c1 from '../../../public/images/c1.jpg'
+import c2 from '../../../public/images/c2.jpg'
+import c3 from '../../../public/images/c3.jpg'
+import c4 from '../../../public/images/c4.jpg'
 
 export class CarouselShow extends React.Component {
 
@@ -13,12 +17,12 @@ export class CarouselShow extends React.Component {
 
     render() {
 
-        return (<div style={{width:946,height:'100%'}}>
-            <Carousel autoplay>
-                <div><h3>1</h3></div>
-                <div><h3>2</h3></div>
-                <div><h3>3</h3></div>
-                <div><h3>4</h3></div>
+        return (<div>
+            <Carousel autoplay className={styles.carousel1}>
+                <div><img src={c1} alt="" /></div>
+                <div><img src={c2} alt="" /></div>
+                <div><img src={c3} alt="" /></div>
+                <div><img src={c4} alt="" /></div>
             </Carousel>
             <div><h2>走马灯测试中...</h2></div>
         </div>)

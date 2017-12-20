@@ -103,9 +103,9 @@ export class mainPage extends React.Component {
                     <div className={styles.header}>
                         <a className={styles.headerTitle}>雕虫</a>
                         <div className={styles.headerContent}>
-                            {!userName ? (<ul style={{color:'#333 !important'}}>
-                                <li><Link to="/main" style={{color:'#333'}}><i className="fa fa-compass"></i> 首页</Link></li>
-                                <li> <Link to="/downloadApp" style={{color:'#333'}}><i className="fa fa-mobile" aria-hidden="true"></i>下载APP</Link></li>
+                            {!userName ? (<ul style={{ color: '#333 !important' }}>
+                                <li><Link to="/main" style={{ color: '#333' }}><i className="fa fa-compass"></i> 首页</Link></li>
+                                <li> <Link to="/downloadApp" style={{ color: '#333' }}><i className="fa fa-mobile" aria-hidden="true"></i>下载APP</Link></li>
                                 <li><div className={styles.searchBox} >
                                     <div style={{ display: 'flex' }}>
                                         <input type="text" placeholder="你想要的..." />
@@ -113,9 +113,9 @@ export class mainPage extends React.Component {
                                     </div>
                                 </div></li>
                             </ul>) : (<ul>
-                                <li><Link to="/discover" style={{color:'#333'}}>发现</Link></li>
-                                <li><Link to="/forks" style={{color:'#333'}}>关注</Link></li>
-                                <li><Link to="/message" style={{color:'#333'}}>消息</Link></li>
+                                <li><Link to="/discover" style={{ color: '#333' }}>发现</Link></li>
+                                <li><Link to="/forks" style={{ color: '#333' }}>关注</Link></li>
+                                <li><Link to="/message" style={{ color: '#333' }}>消息</Link></li>
                                 <li><div className={styles.searchBox} >
                                     <div style={{ display: 'flex' }}>
                                         <input type="text" placeholder="你想要的..." />
@@ -157,54 +157,8 @@ export class mainPage extends React.Component {
                 </header>
                 <article>
                     <div className={styles.content}>
-                        <div className={styles.leftGrow}></div>
                         <div id="content" className={styles.midContent}>
                             <HeaderRoute />
-                            {/*<h1>上方固定，下方自适应</h1>
-                            <p>上方固定，下方自适应</p>
-                            <p>上方固定，下方自适应</p>
-                            <p>上方固定，下方自适应</p>
-                            <p>上方固定，下方自适应</p>
-                            <p>上方固定，下方自适应</p>
-                            <p>上方固定，下方自适应</p>
-                            <p>上方固定，下方自适应</p>
-                            <p>上方固定，下方自适应</p>
-                            <p>上方固定，下方自适应</p>
-                            <p>上方固定，下方自适应</p>
-                            <p>上方固定，下方自适应</p>
-                            <p>上方固定，下方自适应</p>
-                            <p>上方固定，下方自适应</p>
-                            <p>上方固定，下方自适应</p>
-                            <p>上方固定，下方自适应</p>
-                            <p>上方固定，下方自适应</p>
-                            <p>上方固定，下方自适应</p>
-                            <p>上方固定，下方自适应</p>
-                            <p>上方固定，下方自适应</p>
-                            <p>上方固定，下方自适应</p>
-                            <p>上方固定，下方自适应</p>
-                            <p>上方固定，下方自适应</p>
-                            <p>上方固定，下方自适应</p>
-                            <p>上方固定，下方自适应</p>
-                            <p>上方固定，下方自适应</p>
-                            <p>上方固定，下方自适应</p>
-                            <p>上方固定，下方自适应</p>
-                            <p>上方固定，下方自适应</p>
-                            <p>上方固定，下方自适应</p>
-                            <p>上方固定，下方自适应</p>
-                            <p>上方固定，下方自适应</p>
-                            <p>上方固定，下方自适应</p>
-                            <p>上方固定，下方自适应</p>
-                            <p>上方固定，下方自适应</p>
-                            <p>上方固定，下方自适应</p>
-                            <p>上方固定，下方自适应</p>
-                            <p>上方固定，下方自适应</p>
-                            <p>上方固定，下方自适应</p>
-                            <p>上方固定，下方自适应</p>
-                            <p>上方固定，下方自适应</p>
-                            <p>上方固定，下方自适应</p>
-                            <p>上方固定，下方自适应</p>*/}
-                        </div>
-                        <div className={styles.rightGrow}>
                         </div>
                     </div>
 
