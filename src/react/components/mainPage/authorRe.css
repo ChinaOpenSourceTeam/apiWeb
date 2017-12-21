@@ -95,8 +95,8 @@
 .authorMore {
     position: absolute;
     padding: 7px 7px 7px 12px;
-    left: 0;
-    width: 100%;
+    left: 30px;
+    width: 90%;
     font-size: 13px;
     color: #787878;
     background-color: #f7f7f7;

@@ -7,6 +7,7 @@ import { CarouselShow } from '../../components/mainPage/carousel'
 import { HotTop } from '../../components/mainPage/hotTop'
 import { TagPlate } from '../../components/mainPage/tagPlate'
 import { AuthorRe } from '../../components/mainPage/authorRe'
+import { ArticleList } from '../../components/mainPage/articleList'
 
 export default class MainPage extends React.Component {
 
@@ -22,12 +23,12 @@ export default class MainPage extends React.Component {
         return (
             <div className={styles.row}>
                 <Row gutter={24}>
-                    <Col span={16} className={styles.rowLeft}>
+                    <Col span={16} style={{paddingRight:20}}>
                         <CarouselShow />
                         <TagPlate />                 
-                        <div style={{color:'#000'}}>文章列表....</div>   
+                        <ArticleList />
                     </Col>
-                    <Col span={8} className={styles.rowRight}>
+                    <Col span={8} style={{paddingLeft:20}}>
                     <HotTop />
                     <AuthorRe />
                     </Col>
