@@ -48,7 +48,7 @@ export class HeaderRoute extends React.Component {
 
     render() {
         return (
-            <div style={{ width: '100%', height: '100%', overflow: 'auto' }} className="menu">
+            <div style={{ width: '100%', height: '100%'}} className="menu">
                 <Switch>
                     <Route path="/downloadApp" component={DownloadApp} />
                     <Route path="/discover" component={Discover} />

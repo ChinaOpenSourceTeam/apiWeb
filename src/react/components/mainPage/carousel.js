@@ -24,7 +24,6 @@ export class CarouselShow extends React.Component {
                 <div><img src={c3} alt="" /></div>
                 <div><img src={c4} alt="" /></div>
             </Carousel>
-            <div><h2>走马灯测试中...</h2></div>
         </div>)
     }
 }
