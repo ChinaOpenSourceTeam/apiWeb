@@ -84,11 +84,17 @@ article {
     .searchBox {
         width: 400px !important;
     }
+    .midContent {
+        max-width: 960px;
+    }
 }
 
 @media(min-width:1360px) {
     .searchBox {
         width: 300px !important;
+    }
+    .midContent {
+        max-width: 960px;
     }
 }
 

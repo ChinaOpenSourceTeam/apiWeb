@@ -1,4 +1,23 @@
 .row {
     margin: 20px -15px;
-    padding: 0 15px;
+    padding: 0 15px 0 40px;
+}
+
+.rowLeft {
+    display: block;
+    min-width: 525px;
+}
+
+.rowRight {
+    display: block;
+}
+
+@media(max-width:810px) {
+    .rowRight {
+        display: none !important;
+    }
+    .rowLeft {
+        display: block;
+        width: 100%;
+    }
 }
