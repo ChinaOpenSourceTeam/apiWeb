@@ -57,7 +57,12 @@ export class mainPage extends React.Component {
                     message.error(nextProps.msgTip.msg);
                 }
             }
+        }
 
+        if (nextProps.location.pathname == '/writeAticle' && !localStorage.removeItem('username')) {
+            nextProps.location.pathname = '/login';
+            nextProps.history.replace(nextProps.location);
+            message.info('请先登录！');
         }
     }
     componentWillUpdate() {
