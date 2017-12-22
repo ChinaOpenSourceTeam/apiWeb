@@ -14,11 +14,12 @@
     margin: 5px 0;
     padding: 0 20px;
     font-size: 14px;
-    color: #f0f0f0;
+    color: #ffffff;
     border-radius: 4px;
 }
 
 .hotTop a {
     color: #f0f0f0;
     font-weight: bold;
+    font-style: oblique;
 }
