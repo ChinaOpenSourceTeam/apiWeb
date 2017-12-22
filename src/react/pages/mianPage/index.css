@@ -1,6 +1,6 @@
 .row {
     margin: 20px -15px;
-    padding: 0 15px 0 20px;
+    padding: 0 15px 0 26px;
 }
 
 .rowLeft {
@@ -19,5 +19,6 @@
     .rowLeft {
         display: block;
         width: 100%;
+        min-width: 660px;
     }
 }
