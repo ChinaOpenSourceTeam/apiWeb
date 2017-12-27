@@ -126,9 +126,10 @@ article {
     color: #333 !important;
 }
 
-.headerContent ul>li :hover {
+
+/*.headerContent ul>li :hover {
     background: #f0f0f0 !important;
-}
+}*/
 
 .headerContent ul>li :focus {
     text-decoration: none;
