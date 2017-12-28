@@ -15,6 +15,8 @@ import logImg from "../../../idea_large.svg";
 import { Form, Icon, Input, Button, Checkbox, Tooltip, message } from 'antd';
 import { config } from '../../../utils/config'
 import axios from 'axios';
+import moment from 'moment';
+
 const FormItem = Form.Item;
 
 axios.defaults.headers.common['Authorization'] = localStorage.getItem('access_token');
@@ -26,7 +28,8 @@ class LoginF extends React.Component {
             loading: false,
             loginFlag: 0,
             reg_loading: 0,
-            loginTable: true
+            loginTable: true,
+            imgFetchTime:moment().format('X'),//注册验证码获取时间
         };
         //this.handleSubmit=this.handleSubmit.bind(this);
     }
@@ -34,6 +37,9 @@ class LoginF extends React.Component {
         if (this.props.location.state && this.props.location.state.opt) {
             let opt = true;
             this.props.location.state.opt == 'login' ? opt = true : opt = false;
+            // if(opt){
+            //     this.getCheckImg();
+            // }
             this.setState({ loginTable: opt });
         }
 
@@ -45,22 +51,7 @@ class LoginF extends React.Component {
             if (nextProps.loginRet === 0) {
                 nextProps.location.pathname = '/mian';
                 nextProps.history.push(nextProps.location);
-
-                // //请求数据字典
-                // this.props.querySysdic();
                 console.log(localStorage.getItem('access_token'));
-                // axios.get('/system/user/findUserByLoginName?loginName=' + 'liqiwei', config)
-                //     .then(function (res) {
-                //         debugger;
-                //         if (res.data.code == 0) {
-                //             message.success('请求成功！')
-                //         } else {
-                //             message.error('请求失败！')
-                //         }
-                //     })
-                //     .catch(function (err) {
-                //         message.success('请求失败！')
-                //     })
 
             } else {
                 this.setState({ loading: false, loginFlag: nextProps.loginRet });
@@ -101,6 +92,11 @@ class LoginF extends React.Component {
         this.setState({
             loginTable: (e.target.id == 'login' ? true : false)
         });
+    }
+
+    getImgTime=()=>{
+        let newTime = moment().format('X');
+        this.setState({imgFetchTime:newTime});
     }
 
     render() {
@@ -158,7 +154,24 @@ class LoginF extends React.Component {
                                     placeholder="密码" />
                                 )}
                         </FormItem>
-
+                        <FormItem >
+                            <div className={styles.checkImg}>
+                                {getFieldDecorator('ckeckImg', {
+                                rules: [
+                                    {
+                                        required: true,
+                                        message: '请输入密码!'
+                                    }
+                                ]
+                            })(
+                                <Input style={{width:130}} prefix={< Icon type="picture" style={{ fontSize: 13 }} />}  
+                                    placeholder="验证码" />
+                                )}
+                                <img src={`http://www.chinaopensource.top:9080/system/identifyingCode?time=${this.state.imgFetchTime}`} alt=""/>
+                                <a onClick={this.getImgTime} title="换一张">< Icon type="reload" style={{ fontSize: 14,padding:'0 4px',color:'#b5b5b5' ,cursor:'point'}} /></a>
+                            </div>
+                            
+                        </FormItem>
                         <FormItem >
                             <div
                                 style={{

@@ -108,6 +108,12 @@
     cursor: pointer;
 }
 
+.checkImg {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 .ball1 {
     border: 1px solid #e05244;
     border-radius: 50%;
