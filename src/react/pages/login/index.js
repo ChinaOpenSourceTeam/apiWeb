@@ -21,7 +21,7 @@ class Login extends React.Component {
                 minHeight: '150hv',
                 flexDirection: 'column',
                 backgroundColor: 'rgb(241, 241, 241)',
-                overflow: 'auto'
+                // overflow: 'auto'
             }}>
                 <div style={{
                     position: 'absolute',

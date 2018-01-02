@@ -155,24 +155,6 @@ class LoginF extends React.Component {
                                 )}
                         </FormItem>
                         <FormItem >
-                            <div className={styles.checkImg}>
-                                {getFieldDecorator('ckeckImg', {
-                                rules: [
-                                    {
-                                        required: true,
-                                        message: '请输入密码!'
-                                    }
-                                ]
-                            })(
-                                <Input style={{width:130}} prefix={< Icon type="picture" style={{ fontSize: 13 }} />}  
-                                    placeholder="验证码" />
-                                )}
-                                <img src={`http://www.chinaopensource.top:9080/system/identifyingCode?time=${this.state.imgFetchTime}`} alt=""/>
-                                <a onClick={this.getImgTime} title="换一张">< Icon type="reload" style={{ fontSize: 14,padding:'0 4px',color:'#b5b5b5' ,cursor:'point'}} /></a>
-                            </div>
-                            
-                        </FormItem>
-                        <FormItem >
                             <div
                                 style={{
                                     display: 'flex',
@@ -263,6 +245,24 @@ class LoginF extends React.Component {
                                     type="password"
                                     placeholder="密码" />
                                 )}
+                        </FormItem>
+                        <FormItem >
+                            <div className={styles.checkImg}>
+                                {getFieldDecorator('ckeckImg', {
+                                rules: [
+                                    {
+                                        required: true,
+                                        message: '请输入密码!'
+                                    }
+                                ]
+                            })(
+                                <Input style={{width:130}} prefix={< Icon type="picture" style={{ fontSize: 13 }} />}  
+                                    placeholder="验证码" />
+                                )}
+                                <img src={`http://www.chinaopensource.top:9080/system/identifyingCode?time=${this.state.imgFetchTime}`} alt=""/>
+                                <a onClick={this.getImgTime} title="换一张">< Icon type="reload" style={{ fontSize: 14,padding:'0 4px',color:'#b5b5b5' ,cursor:'point'}} /></a>
+                            </div>
+                            
                         </FormItem>
                         <FormItem >
                             <div className="reg_btn">
