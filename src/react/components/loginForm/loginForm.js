@@ -29,7 +29,8 @@ class LoginF extends React.Component {
             loginFlag: 0,
             reg_loading: 0,
             loginTable: true,
-            imgFetchTime:moment().format('X'),//注册验证码获取时间
+            regFlag:false,
+            imgFetchTime: moment().format('X'),//注册验证码获取时间
         };
         //this.handleSubmit=this.handleSubmit.bind(this);
     }
@@ -57,8 +58,29 @@ class LoginF extends React.Component {
                 this.setState({ loading: false, loginFlag: nextProps.loginRet });
             }
         }
-
     }
+
+    componentWillUpdate(nextProps,nextState){
+        if(nextState.regFlag){
+            nextProps.location.pathname = '/login';
+            nextProps.history.push(nextProps.location);
+            nextState.regFlag = false;
+        }
+    }
+
+    handleLoginSubmit = (e) => {
+        e.preventDefault();
+        this.props.form.validateFields((err, values) => {
+            if (!err) {
+                let param = {
+                    loginName: values.loginName,
+                    password: values.password
+                };
+                this.setState({ loading: true, loginFlag: 0 });
+                this.props.submitClick(param);
+            }
+        });
+    };
 
     handleLoginSubmit = (e) => {
         e.preventDefault();
@@ -76,14 +98,29 @@ class LoginF extends React.Component {
 
     handleRegSubmit = (e) => {
         e.preventDefault();
+        let _self = this;
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 let param = {
-                    loginName: values.loginName,
-                    password: values.password
+                    name: values.reg_name,
+                    email: values.email,
+                    password: values.reg_password,
+                    imageVerificationCode: values.checkCode
                 };
                 this.setState({ loading: true, loginFlag: 0 });
-                this.props.submitClick(param);
+                // this.props.submitRegClick(param);
+                axios.post('/system/user/saveUser', param, config)
+                    .then(function (res) {
+                        if(res.data.code == 0){
+                            message.success('注册成功！');
+                            this.setState({regFlag:true});
+                        }else{
+                            message.error('注册失败！');                            
+                        }
+                    })
+                    .catch(function (err) {
+                        message.error('注册失败！' +err);
+                    })
             }
         });
     };
@@ -94,9 +131,9 @@ class LoginF extends React.Component {
         });
     }
 
-    getImgTime=()=>{
+    getImgTime = () => {
         let newTime = moment().format('X');
-        this.setState({imgFetchTime:newTime});
+        this.setState({ imgFetchTime: newTime });
     }
 
     render() {
@@ -202,7 +239,8 @@ class LoginF extends React.Component {
                         </div>
 
                     </Form>
-                    : <Form onSubmit={this.handleRegSubmit} className={styles.loginForm}>
+                    :
+                    <Form onSubmit={this.handleRegSubmit} className={styles.loginForm}>
                         <FormItem >
                             {getFieldDecorator('reg_name', {
                                 rules: [
@@ -218,17 +256,20 @@ class LoginF extends React.Component {
                                 )}
                         </FormItem>
                         <FormItem >
-                            {getFieldDecorator('tel', {
+                            {getFieldDecorator('email', {
                                 rules: [
                                     {
                                         required: true,
-                                        message: '手机号!'
+                                        message: '邮箱!'
+                                    },{
+                                        pattern:/^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/,
+                                        message:'邮箱格式不正确'
                                     }
                                 ]
                             })(
                                 <Input
-                                    prefix={< Icon type="tablet" style={{ fontSize: 13 }} />}
-                                    placeholder="手机号" />
+                                    prefix={< Icon type="mail" style={{ fontSize: 13 }} />}
+                                    placeholder="邮箱" />
                                 )}
                         </FormItem>
                         <FormItem >
@@ -248,21 +289,21 @@ class LoginF extends React.Component {
                         </FormItem>
                         <FormItem >
                             <div className={styles.checkImg}>
-                                {getFieldDecorator('ckeckImg', {
-                                rules: [
-                                    {
-                                        required: true,
-                                        message: '请输入密码!'
-                                    }
-                                ]
-                            })(
-                                <Input style={{width:130}} prefix={< Icon type="picture" style={{ fontSize: 13 }} />}  
-                                    placeholder="验证码" />
-                                )}
-                                <img src={`http://www.chinaopensource.top:9080/system/identifyingCode?time=${this.state.imgFetchTime}`} alt=""/>
-                                <a onClick={this.getImgTime} title="换一张">< Icon type="reload" style={{ fontSize: 14,padding:'0 4px',color:'#b5b5b5' ,cursor:'point'}} /></a>
+                                {getFieldDecorator('checkCode', {
+                                    rules: [
+                                        {
+                                            required: true,
+                                            message: '请输入密码!'
+                                        }
+                                    ]
+                                })(
+                                    <Input style={{ width: 130 }} prefix={< Icon type="picture" style={{ fontSize: 13 }} />}
+                                        placeholder="验证码" />
+                                    )}
+                                <img src={`http://www.chinaopensource.top:9080/system/identifyingCode?time=${this.state.imgFetchTime}`} alt="" />
+                                <a onClick={this.getImgTime} title="换一张">< Icon type="reload" style={{ fontSize: 14, padding: '0 4px', color: '#b5b5b5', cursor: 'point' }} /></a>
                             </div>
-                            
+
                         </FormItem>
                         <FormItem >
                             <div className="reg_btn">

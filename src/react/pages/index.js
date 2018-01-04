@@ -44,6 +44,7 @@ export class mainPage extends React.Component {
         this.setState({ collapsed });
     }
     componentWillReceiveProps(nextProps) {
+        debugger;
         if (nextProps.msgTip !== this.props.msgTip) {
             if (nextProps.msgTip.type === 0)
                 message.success(nextProps.msgTip.msg);
@@ -87,7 +88,9 @@ export class mainPage extends React.Component {
     }
 
     render() {
+        debugger;
         let userName = localStorage.getItem('username');
+        // let userName = true;
         const HomePage = () => <div>Home Page</div>
 
         const miniDropMenu = (
