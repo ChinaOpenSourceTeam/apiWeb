@@ -20,6 +20,7 @@ import moment from 'moment';
 const FormItem = Form.Item;
 
 axios.defaults.headers.common['Authorization'] = localStorage.getItem('access_token');
+// axios.defaults.withCredentials = true;
 
 class LoginF extends React.Component {
     constructor(props) {
@@ -104,12 +105,12 @@ class LoginF extends React.Component {
                 let param = {
                     name: values.reg_name,
                     email: values.email,
-                    password: values.reg_password,
+                    passwd: values.reg_password,
                     imageVerificationCode: values.checkCode
                 };
                 this.setState({ loading: true, loginFlag: 0 });
                 // this.props.submitRegClick(param);
-                axios.post('/system/user/saveUser', param, config)
+                axios.post('/system/user/saveUser',param, config)
                     .then(function (res) {
                         if(res.data.code == 0){
                             message.success('注册成功！');
@@ -300,7 +301,7 @@ class LoginF extends React.Component {
                                     <Input style={{ width: 130 }} prefix={< Icon type="picture" style={{ fontSize: 13 }} />}
                                         placeholder="验证码" />
                                     )}
-                                <img src={`http://www.chinaopensource.top:9080/system/identifyingCode?time=${this.state.imgFetchTime}`} alt="" />
+                                {/*<img src={`http://www.chinaopensource.top:9080/system/identifyingCode?time=${this.state.imgFetchTime}`} alt="" />*/}
                                 <a onClick={this.getImgTime} title="换一张">< Icon type="reload" style={{ fontSize: 14, padding: '0 4px', color: '#b5b5b5', cursor: 'point' }} /></a>
                             </div>
 
