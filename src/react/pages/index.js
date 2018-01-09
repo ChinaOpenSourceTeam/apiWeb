@@ -12,6 +12,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Button, Icon, Layout, message, Select } from 'antd';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { config } from '../../utils/config';
 import logo from '../../public/images/theme_logo.svg';
 import user from '../../public/images/vip.png';
 import * as act from '../../redux/actions/login';
@@ -198,6 +200,17 @@ export class mainPage extends React.Component {
     }
 
     logOut() {
+        axios.post('system/login/signOut', {}, config)
+            .then(function (res) {
+                if (res.data.code == 0) {
+                    // message.success('成功！');
+                } else {
+                    message.error('退出失败！');
+                }
+            })
+            .catch(function (err) {
+                message.error('退出失败！');
+            })
         localStorage.removeItem('username');
         this.props.history.push('/');
     }
