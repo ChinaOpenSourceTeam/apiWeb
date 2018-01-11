@@ -18,7 +18,7 @@ import logo from '../../public/images/theme_logo.svg';
 import user from '../../public/images/vip.png';
 import * as act from '../../redux/actions/login';
 // import { MainMenu } from '../../utils/menu';
-import { HeaderRoute, ContentRoute } from '../routes'
+import { HeaderRoute, ContentRoute ,UserRoute} from '../routes'
 import styles from './index.css'
 const { Header, Sider, Content, Footer } = Layout;
 
@@ -157,7 +157,7 @@ export class mainPage extends React.Component {
                                         <li><a><i className="fa fa-user" aria-hidden="true"></i><span>我的主页</span></a></li>
                                         <li><a><i className="fa fa-bookmark" aria-hidden="true"></i><span>收藏的文章</span></a></li>
                                         <li><a><i className="fa fa-heart" aria-hidden="true"></i><span>喜欢的文章</span></a></li>
-                                        <li><a><i className="fa fa-cog" aria-hidden="true"></i><span>设置</span></a></li>
+                                        <li><a><Link to="/user/setting" style={{ color: '#333' }}><i className="fa fa-cog" aria-hidden="true"></i><span>设置</span></Link></a></li>
                                         <li><a onClick={this.logOut}><i className="fa fa-sign-out" aria-hidden="true"></i><span>退出</span></a></li>
                                     </ul>
                                 </span>}

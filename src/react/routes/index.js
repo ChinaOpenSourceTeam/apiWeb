@@ -7,8 +7,10 @@ import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 import { Layout } from 'antd';
 import { systemMenu } from '../../utils/menu';
 import Login from '../../react/pages/login';
-import mainPage from '../../react/pages';
+import MainPage from '../../react/pages';
 import HomePage from '../../react/pages/mianPage';
+
+import UserSetting from '../../react/pages/userManage/userSetting'
 
 import test from '../../react/pages/testPage'
 
@@ -34,7 +36,7 @@ export default class Routes extends Component {
                         <div className="listen"></div>
                         <Switch>
                             <Route path="/login" component={Login} />
-                            <Route path="/" component={mainPage} />
+                            <Route path="/" component={MainPage} />
                             <Redirect from='*' to='/' />
                         </Switch>
                     </div>
@@ -51,11 +53,25 @@ export class HeaderRoute extends React.Component {
             <div style={{ width: '100%', height: '100%'}} className="menu">
                 <Switch>
                     <Route path="/downloadApp" component={DownloadApp} />
-                    <Route path="/discover" component={mainPage} />
+                    <Route path="/discover" component={MainPage} />
                     <Route path="/forks" component={Fork} />
                     <Route path="/message" component={test} />
+                    <Route path="/user" component={UserRoute} />
                     <Route path="/writeAticle" component={test} />
                     <Route component={HomePage} />
+                </Switch>
+            </div>
+        );
+    }
+}
+
+export class UserRoute extends React.Component {
+
+    render() {
+        return (
+            <div style={{ width: '100%', height: '100%'}} className="menu">
+                <Switch>
+                    <Route path="/user/setting" component={UserSetting} />
                 </Switch>
             </div>
         );

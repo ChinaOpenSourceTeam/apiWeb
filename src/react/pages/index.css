@@ -302,13 +302,7 @@ article {
     background: #f0f0f0;
 }
 
-.dropMenu li>a>i {
-    margin: 0 20px;
-    font-size: 18px;
-    color: #ea6f5a !important;
-}
-
-.dropMenu li>a>i {
+.dropMenu li>a>a>i {
     margin: 0 20px;
     font-size: 18px;
     color: #ea6f5a !important;
