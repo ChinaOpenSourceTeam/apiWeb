@@ -98,7 +98,7 @@ class UserInfo extends React.Component {
                         {...formItemLayout}
                         label="住址："
                         >
-                        {getFieldDecorator('confirm', {
+                        {getFieldDecorator('addr', {
                             rules: [{
                                 required: true, message: 'Please confirm your password!',
                             }, {
