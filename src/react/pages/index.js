@@ -18,7 +18,7 @@ import logo from '../../public/images/theme_logo.svg';
 import user from '../../public/images/vip.png';
 import * as act from '../../redux/actions/login';
 // import { MainMenu } from '../../utils/menu';
-import { HeaderRoute, ContentRoute ,UserRoute} from '../routes'
+import { HeaderRoute, ContentRoute, UserRoute } from '../routes'
 import styles from './index.css'
 const { Header, Sider, Content, Footer } = Layout;
 
@@ -33,7 +33,8 @@ export class mainPage extends React.Component {
         this.state = {
             userName: '',
             id: '',
-            miniDropMenu: false
+            miniDropMenu: false,
+            showHeader: true,
         };
         this.logOut = this.logOut.bind(this);
     }
@@ -61,12 +62,6 @@ export class mainPage extends React.Component {
                 }
             }
         }
-
-        if (nextProps.location.pathname == '/writeAticle' && localStorage.getItem('username')) {
-            nextProps.location.pathname = '/login';
-            nextProps.history.replace(nextProps.location);
-            message.info('请先登录！');
-        }
     }
     componentWillUpdate() {
 
@@ -74,6 +69,11 @@ export class mainPage extends React.Component {
 
     componentDidMount() {
         window.addEventListener('unload', this.handleUnload);
+        debugger;
+        console.log(this.props.location.pathname, 66666666666666);
+        if (this.props.location.pathname == '/writeAticle') {
+            this.setState({ showHeader: false });
+        }
     }
 
     componentWillUnmount() {
@@ -81,13 +81,25 @@ export class mainPage extends React.Component {
     }
 
     handleUnload() {
-        localStorage.removeItem('username');
+        if (!(this.props.location.pathname == '/writeAticle')) {
+            localStorage.removeItem('username');
+        }
     }
 
     showHeadBar = () => {
         let _self = this;
         this.setState({ miniDropMenu: !_self.state.miniDropMenu });
     }
+
+    writeAticle = () => {
+        if (localStorage.getItem('username')) {
+            const w = window.open('about:blank');
+            w.location.href = 'http://localhost:8081/writeAticle'
+        } else {
+            message.info('请先登录！');
+        }
+    }
+
 
     render() {
         debugger;
@@ -109,7 +121,7 @@ export class mainPage extends React.Component {
 
         return (
             <section>
-                <header>
+                {this.state.showHeader ? <header>
                     <div className={styles.header}>
                         <a className={styles.headerTitle}>雕虫</a>
                         <div className={styles.headerContent}>
@@ -161,19 +173,18 @@ export class mainPage extends React.Component {
                                         <li><a onClick={this.logOut}><i className="fa fa-sign-out" aria-hidden="true"></i><span>退出</span></a></li>
                                     </ul>
                                 </span>}
-                            <Button type="danger" className="acticle"><i className="fa fa-pencil"></i><Link to="/writeAticle" className={styles.Aa} onClick={this.loginOpt}>写文章</Link></Button>
+                            <Button type="danger" className="acticle" onClick={this.writeAticle}><i className="fa fa-pencil"></i>写文章</Button>
                         </div>
                     </div>
-                </header>
+                </header> : null}
                 <article>
                     <div className={styles.content}>
                         <div id="content" className={styles.midContent}>
                             <HeaderRoute />
                         </div>
                     </div>
-
                 </article>
-                <footer className={styles.mainFooter}>
+                {this.state.showHeader ? <footer className={styles.mainFooter}>
                     <div className={styles.footer}>
                         <div className={styles.infoRow1}>
                             <a href="">关于雕虫</a>
@@ -194,7 +205,7 @@ export class mainPage extends React.Component {
                             <span>©2017-2020 合肥2B青年团队 / 雕虫 / 皖ICP备11018329号-5 / 皖公网安备31010402002252号 </span>
                         </div>
                     </div>
-                </footer>
+                </footer> : null}
             </section>
         );
     }

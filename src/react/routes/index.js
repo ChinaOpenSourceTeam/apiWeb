@@ -10,7 +10,8 @@ import Login from '../../react/pages/login';
 import MainPage from '../../react/pages';
 import HomePage from '../../react/pages/mianPage';
 
-import UserSetting from '../../react/pages/userManage/userSetting'
+import UserSetting from '../../react/pages/userManage/userSetting';
+import WriteAticle from '../../react/pages/write/writeAticle'
 
 import test from '../../react/pages/testPage'
 
@@ -57,7 +58,7 @@ export class HeaderRoute extends React.Component {
                     <Route path="/forks" component={Fork} />
                     <Route path="/message" component={test} />
                     <Route path="/user" component={UserRoute} />
-                    <Route path="/writeAticle" component={test} />
+                    <Route path="/writeAticle" component={WriteAticle} />
                     <Route component={HomePage} />
                 </Switch>
             </div>
