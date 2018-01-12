@@ -53,7 +53,7 @@ export class HeaderRoute extends React.Component {
             <div style={{ width: '100%', height: '100%'}} className="menu">
                 <Switch>
                     <Route path="/downloadApp" component={DownloadApp} />
-                    <Route path="/discover" component={MainPage} />
+                    {/* <Route path="/discover" component={DownloadApp} /> */}
                     <Route path="/forks" component={Fork} />
                     <Route path="/message" component={test} />
                     <Route path="/user" component={UserRoute} />

@@ -62,7 +62,7 @@ export class mainPage extends React.Component {
             }
         }
 
-        if (nextProps.location.pathname == '/writeAticle' && !localStorage.removeItem('username')) {
+        if (nextProps.location.pathname == '/writeAticle' && localStorage.getItem('username')) {
             nextProps.location.pathname = '/login';
             nextProps.history.replace(nextProps.location);
             message.info('请先登录！');
@@ -123,7 +123,7 @@ export class mainPage extends React.Component {
                                     </div>
                                 </div></li>
                             </ul>) : (<ul>
-                                <li><Link to="/discover" style={{ color: '#333' }}>发现</Link></li>
+                                <li><Link to="/main" style={{ color: '#333' }}>发现</Link></li>
                                 <li><Link to="/forks" style={{ color: '#333' }}>关注</Link></li>
                                 <li><Link to="/message" style={{ color: '#333' }}>消息</Link></li>
                                 <li><div className={styles.searchBox} >
