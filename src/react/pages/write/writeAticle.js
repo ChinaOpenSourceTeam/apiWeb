@@ -9,7 +9,7 @@ import  ArticleEditor from '../../components/write/articleEditor';
 
 // import { ArticleList } from '../../components/mainPage/articleList'
 
-export default class UserSetting extends React.Component {
+export default class WriteAticle extends React.Component {
 
     constructor(props) {
         super(props);
@@ -23,12 +23,12 @@ export default class UserSetting extends React.Component {
         return (
             <div className={styles.row}>
                 <Row className={styles.leftRowList} gutter={24}>
-                    <Col span={16} style={{paddingRight:20}} className={styles.rowLeft}>
+                    <Col span={24} style={{paddingRight:20}} className={styles.rowLeft}>
                         <ArticleEditor />
                     </Col>
-                    <Col span={8} style={{paddingLeft:20}} className={styles.rowRight}>
-                        {/* <UserMenu />                          */}
-                    </Col>
+                    {/* <Col span={8} style={{paddingLeft:20}} className={styles.rowRight}>
+                        {<UserMenu />                         }
+                    </Col> */}
                 </Row>
             </div>
         )

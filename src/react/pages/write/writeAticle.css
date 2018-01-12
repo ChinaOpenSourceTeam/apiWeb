@@ -1,6 +1,10 @@
 .row {
-    margin: 20px -15px;
-    padding: 0 15px 0 26px;
+    margin: 10px -15px;
+    padding: 40px;
+    background: #fff;
+    box-shadow: 0 0 8px rgba(0, 0, 0, .1);
+    vertical-align: middle;
+    border-radius: 1%;
 }
 
 .rowLeft {

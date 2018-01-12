@@ -177,7 +177,7 @@ export class mainPage extends React.Component {
                         </div>
                     </div>
                 </header> : null}
-                <article>
+                <article style={!this.state.showHeader?{paddingTop:0,backgroundColor:'#f0f0f0'}:{paddingTop:57}}>
                     <div className={styles.content}>
                         <div id="content" className={styles.midContent}>
                             <HeaderRoute />
