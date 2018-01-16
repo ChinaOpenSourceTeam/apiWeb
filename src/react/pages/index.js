@@ -34,7 +34,7 @@ export class mainPage extends React.Component {
             userName: '',
             id: '',
             miniDropMenu: false,
-            showHeader: true,
+            showHeader: false,
         };
         this.logOut = this.logOut.bind(this);
     }
@@ -178,14 +178,14 @@ export class mainPage extends React.Component {
                         </div>
                     </div>
                 </header>
-                <article style={!this.state.showHeader?{backgroundColor:'#fff'}:{paddingTop:57}}>
+                <article style={this.state.showHeader?{backgroundColor:'#f5f6f7'}:{paddingTop:57,backgroundColor:'#fff'}}>
                     <div className={styles.content}>
                         <div id="content" className={styles.midContent}>
                             <HeaderRoute />
                         </div>
                     </div>
                 </article>
-                {this.state.showHeader ? <footer className={styles.mainFooter}>
+                {!this.state.showHeader ? <footer className={styles.mainFooter}>
                     <div className={styles.footer}>
                         <div className={styles.infoRow1}>
                             <a href="">关于雕虫</a>
