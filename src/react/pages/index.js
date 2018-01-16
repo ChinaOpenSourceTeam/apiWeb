@@ -82,7 +82,7 @@ export class mainPage extends React.Component {
 
     handleUnload() {
         if (!(this.props.location.pathname == '/writeAticle')) {
-            localStorage.removeItem('username');
+            localStorage.removeItem('username'); 
         }
     }
 
@@ -122,7 +122,7 @@ export class mainPage extends React.Component {
 
         return (
             <section>
-                {this.state.showHeader ? <header>
+                <header>
                     <div className={styles.header}>
                         <a className={styles.headerTitle}>雕虫</a>
                         <div className={styles.headerContent}>
@@ -177,8 +177,8 @@ export class mainPage extends React.Component {
                             <Button type="danger" className="acticle" onClick={this.writeAticle}><i className="fa fa-pencil"></i>写文章</Button>
                         </div>
                     </div>
-                </header> : null}
-                <article style={!this.state.showHeader?{paddingTop:0,backgroundColor:'#f0f0f0'}:{paddingTop:57}}>
+                </header>
+                <article style={!this.state.showHeader?{backgroundColor:'#fff'}:{paddingTop:57}}>
                     <div className={styles.content}>
                         <div id="content" className={styles.midContent}>
                             <HeaderRoute />
