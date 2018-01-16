@@ -72,7 +72,7 @@ export class mainPage extends React.Component {
         debugger;
         console.log(this.props.location.pathname, 66666666666666);
         if (this.props.location.pathname == '/writeAticle') {
-            this.setState({ showHeader: false });
+            this.setState({ showHeader: true });
         }
     }
 
@@ -94,7 +94,8 @@ export class mainPage extends React.Component {
     writeAticle = () => {
         if (localStorage.getItem('username')) {
             const w = window.open('about:blank');
-            w.location.href = 'http://www.chinaopensource.top:8081/writeAticle'
+            // w.location.href = 'http://www.chinaopensource.top:8081/writeAticle'
+            w.location.href = 'http://localhost:8081/writeAticle'
         } else {
             message.info('请先登录！');
         }
