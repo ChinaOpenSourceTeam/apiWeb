@@ -63,8 +63,20 @@ export class mainPage extends React.Component {
             }
         }
     }
-    componentWillUpdate() {
+    componentWillUpdate(nextProps) {
+        if (nextProps.location.pathname == '/writeAticle') {
+            if (this.state.showHeader) {
 
+            } else {
+                this.setState({ showHeader: true });
+            }
+        } else {
+            if (!this.state.showHeader) {
+
+            } else {
+                this.setState({ showHeader: false });
+            }
+        }
     }
 
     componentDidMount() {
@@ -82,7 +94,7 @@ export class mainPage extends React.Component {
 
     handleUnload() {
         if (!(this.props.location.pathname == '/writeAticle')) {
-            localStorage.removeItem('username'); 
+            localStorage.removeItem('username');
         }
     }
 
@@ -93,9 +105,9 @@ export class mainPage extends React.Component {
 
     writeAticle = () => {
         if (localStorage.getItem('username')) {
-            const w = window.open('about:blank');
+            const w = window.open('http://localhost:8081/writeAticle');
             // w.location.href = 'http://www.chinaopensource.top:8081/writeAticle'
-            w.location.href = 'http://localhost:8081/writeAticle'
+            // w.location.href = 'http://localhost:8081/writeAticle'
         } else {
             message.info('请先登录！');
         }
@@ -178,7 +190,7 @@ export class mainPage extends React.Component {
                         </div>
                     </div>
                 </header>
-                <article style={this.state.showHeader?{backgroundColor:'#f5f6f7'}:{paddingTop:57,backgroundColor:'#fff'}}>
+                <article style={this.state.showHeader ? { backgroundColor: '#f5f6f7' } : { paddingTop: 57, backgroundColor: '#fff' }}>
                     <div className={styles.content}>
                         <div id="content" className={styles.midContent}>
                             <HeaderRoute />

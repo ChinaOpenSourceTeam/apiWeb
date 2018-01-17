@@ -13,6 +13,10 @@ export default class MyEditor extends React.Component {
       }
       receiveHtml(content) {
         console.log("Recieved content", content);
+        this.setState({content:content});
+      }
+      getContent=()=>{
+        return this.state.content;
       }
       render() {
         const uploadConfig = {

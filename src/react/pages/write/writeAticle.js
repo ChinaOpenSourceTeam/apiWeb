@@ -23,7 +23,7 @@ export default class WriteAticle extends React.Component {
         return (
             <div className={styles.row}>
                 <Row className={styles.leftRowList} gutter={24}>
-                    <Col span={24} style={{paddingRight:20}} className={styles.rowLeft}>
+                    <Col span={24} className={styles.rowLeft}>
                         <ArticleEditor />
                     </Col>
                     {/* <Col span={8} style={{paddingLeft:20}} className={styles.rowRight}>

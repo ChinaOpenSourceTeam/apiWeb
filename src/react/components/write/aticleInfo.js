@@ -1,17 +1,46 @@
 import React from 'react';
-import { Form, Input, Tooltip, Icon, Carousel, Row, Col, Button } from 'antd';
+import { Form, Input, Tooltip, Icon, Carousel, Row, Col, Button, Select } from 'antd';
 
 import styles from './articleInfo.css';
 
 // import { ArticleList } from '../../components/mainPage/articleList'
 const FormItem = Form.Item;
+const Option = Select.Option;
 class AticleInfo extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            loading: false
+            loading: false,
+            size: 'large',
+            tags: ''
         };
+    }
+
+    handleChange = (value) => {
+        console.log(`Selected: ${value}`);
+        if (value.length > 2) {
+            // this.props.form.setFieldsValue({ tags: value.slice(0, 3) });
+            // this.setState({ tags: value.slice(0, 3) });
+        } else {
+            // this.props.form.setFieldsValue({ tags: value });
+        }
+    }
+
+    articleSubmit = (type) => {
+        let _self = this;
+        console.log(this.props);
+        this.props.form.validateFields((err, values) => {
+            let contnet = _self.props.Editor.getContent() || '';
+            let tags = values.tags.join(',');
+            let articleInfo = {
+                "title": values.title,
+                "tags": tags,
+                "content": contnet,
+                "status": type
+            }
+            console.log(articleInfo,999999999999999);
+        });
     }
 
     render() {
@@ -39,6 +68,12 @@ class AticleInfo extends React.Component {
                 },
             },
         };
+        const { size } = this.state;
+
+        const children = [];
+        for (let i = 10; i < 36; i++) {
+            children.push(<Option key={i.toString(36) + i}>{i.toString(36) + i}</Option>);
+        }
 
         return (
             <div >
@@ -48,10 +83,8 @@ class AticleInfo extends React.Component {
                         {...formItemLayout}
                         label="文章标题:"
                     >
-                        {getFieldDecorator('email', {
+                        {getFieldDecorator('title', {
                             rules: [{
-                                type: 'email', message: '',
-                            }, {
                                 required: true, message: '',
                             }],
                         })(
@@ -60,35 +93,29 @@ class AticleInfo extends React.Component {
                     </FormItem>
                     <FormItem
                         {...formItemLayout}
-                        label="文章分类:"
-                    >
-                        {getFieldDecorator('type', {
-                            rules: [{
-                                required: true, message: '',
-                            }, {
-                                validator: this.checkConfirm,
-                            }],
-                        })(
-                            <Input type="password" />
-                            )}
-                    </FormItem>
-                    <FormItem
-                        {...formItemLayout}
                         label="文章标签:"
                     >
-                        {getFieldDecorator('password', {
+                        {getFieldDecorator('tags', {
                             rules: [{
                                 required: true, message: '',
-                            }, {
-                                validator: this.checkConfirm,
                             }],
                         })(
-                            <Input type="password" />
+                            <Select
+                                mode="multiple"
+                                size={size}
+                                maxTagCount={3}
+                                placeholder="Please select"
+                                onChange={this.handleChange}
+                                style={{ width: '100%' }}
+                            >
+                                {children}
+                            </Select>
                             )}
                     </FormItem>
 
                     <div className={styles.publishPosition}>
-                        <button className={styles.publish} htmlType="submit">发布</button>
+                        <button className={styles.save} htmlType="submit" onClick={this.articleSubmit.bind(this,'0')}>保存</button>
+                        <button className={styles.publish} htmlType="submit" onClick={this.articleSubmit.bind(this,'1')}>发布</button>
                     </div>
 
                 </Form>

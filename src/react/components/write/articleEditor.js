@@ -21,8 +21,8 @@ export default class ArticeEditor extends React.Component {
 
         return (
             <div className={styles.userMenuList}>
-                <AticleInfoForm />
-                <Editor />
+                <AticleInfoForm Editor={this.refs.Editor}/>
+                <Editor ref="Editor"/>
             </div>
         )
     }
