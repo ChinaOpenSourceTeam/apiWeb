@@ -59,6 +59,7 @@ export class HeaderRoute extends React.Component {
                     <Route path="/message" component={test} />
                     <Route path="/user" component={UserRoute} />
                     <Route path="/writeAticle" component={WriteAticle} />
+                    <Route path="/articleDetail" component={WriteAticle} />
                     <Route component={HomePage} />
                 </Switch>
             </div>

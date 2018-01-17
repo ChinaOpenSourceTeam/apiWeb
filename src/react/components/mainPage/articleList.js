@@ -17,7 +17,7 @@ export class ArticleList extends React.Component {
         return (
             <div className={styles.articleContent}>
                 <ul>
-                    <li>
+                    <li onClick={this.articleDetail.bind(this)}>
                         <a className={styles.userImg} id="userImg">
                             <Avatar size='size' style={{ color: '#f56a00', backgroundColor: '#fde3cf', fontSize: 12 }}>U</Avatar>
                             <span className={styles.name}>尤为</span>
