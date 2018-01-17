@@ -12,6 +12,11 @@ export class ArticleList extends React.Component {
         };
     }
 
+    articleDetail = ()=>{
+        
+    }
+
+
     render() {
 
         return (
