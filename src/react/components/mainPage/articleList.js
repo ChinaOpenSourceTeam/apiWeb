@@ -13,7 +13,7 @@ export class ArticleList extends React.Component {
     }
 
     articleDetail = ()=>{
-        
+        window.open('http://localhost:8081/article');
     }
 
 
@@ -22,7 +22,7 @@ export class ArticleList extends React.Component {
         return (
             <div className={styles.articleContent}>
                 <ul>
-                    <li onClick={this.articleDetail.bind(this)}>
+                    <li >
                         <a className={styles.userImg} id="userImg">
                             <Avatar size='size' style={{ color: '#f56a00', backgroundColor: '#fde3cf', fontSize: 12 }}>U</Avatar>
                             <span className={styles.name}>尤为</span>
@@ -30,7 +30,7 @@ export class ArticleList extends React.Component {
                         </a>
                         <div className={styles.content}>
                             <div className={styles.characters}>
-                                <a><h2>花开后花又落 轮回也没结果</h2></a>
+                                <a onClick={this.articleDetail.bind(this)}><h2>花开后花又落 轮回也没结果</h2></a>
                                 <p>
                                     那些什么你说的爱我,花开后花又落轮回也没结果,苔上雪告诉我你没归来过,独揽月下萤火照亮一纸寂寞,追忆那些什么你说的爱我 花开后花又落轮回也没结果 苔上雪告诉我你没归来过,花开后花又落轮回……演唱：许嵩 乘一叶扁舟入景随风望江畔渔火...
                             </p>
