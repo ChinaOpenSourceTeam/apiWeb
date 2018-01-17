@@ -19,7 +19,7 @@ export default class Artice extends React.Component {
 
 
         return (
-            <div className={styles.userMenuList}>
+            <div>
                 article
             </div>
         )
