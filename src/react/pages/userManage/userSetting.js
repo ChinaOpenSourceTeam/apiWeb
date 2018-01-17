@@ -23,12 +23,13 @@ export default class UserSetting extends React.Component {
         return (
             <div className={styles.row}>
                 <Row className={styles.leftRowList} gutter={24}>
-                    <Col span={16} style={{paddingRight:20}} className={styles.rowLeft}>
-                        <UserInfo />
-                    </Col>
-                    <Col span={8} style={{paddingLeft:20}} className={styles.rowRight}>
+                <Col span={8}  style={{paddingRight:20}} className={styles.rowRight}>
                         <UserMenu />                         
                     </Col>
+                    <Col span={16}  style={{paddingLeft:20}} className={styles.rowLeft}>
+                        <UserInfo />
+                    </Col>
+                    
                 </Row>
             </div>
         )
