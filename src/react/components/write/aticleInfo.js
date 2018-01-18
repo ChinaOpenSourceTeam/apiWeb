@@ -119,7 +119,7 @@ class AticleInfo extends React.Component {
                                 mode="multiple"
                                 size={size}
                                 maxTagCount={3}
-                                placeholder="Please select"
+                                placeholder="标签"
                                 onChange={this.handleChange}
                                 style={{ width: '100%' }}
                             >

@@ -10,7 +10,7 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { Button, Icon, Layout, message, Select } from 'antd';
+import { Button, Icon, Layout, message, Select, BackTop } from 'antd';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { config } from '../../utils/config';
@@ -62,27 +62,22 @@ export class mainPage extends React.Component {
                 }
             }
         }
-    }
-    componentWillUpdate(nextProps) {
         if (nextProps.location.pathname == '/writeAticle') {
-            if (this.state.showHeader) {
-
-            } else {
+            if (!this.state.showHeader) {
                 this.setState({ showHeader: true });
             }
         } else {
-            if (!this.state.showHeader) {
-
-            } else {
+            if (this.state.showHeader) {
                 this.setState({ showHeader: false });
             }
         }
     }
+    componentWillUpdate(nextProps) {
+        
+    }
 
     componentDidMount() {
         window.addEventListener('unload', this.handleUnload);
-        debugger;
-        console.log(this.props.location.pathname, 66666666666666);
         if (this.props.location.pathname == '/writeAticle') {
             this.setState({ showHeader: true });
         }
@@ -105,8 +100,8 @@ export class mainPage extends React.Component {
 
     writeAticle = () => {
         if (JSON.parse(localStorage.getItem('userInfo'))) {
-            // let url = 'http://localhost:8081/writeAticle';
-            let url = 'http://www.chinaopensource.top:8081/writeAticle';
+            let url = 'http://localhost:8081/writeAticle';
+            // let url = 'http://www.chinaopensource.top:8081/writeAticle';
             const w = window.open(url);
             // w.location.href = 'http://www.chinaopensource.top:8081/writeAticle'
         } else {
@@ -114,11 +109,16 @@ export class mainPage extends React.Component {
         }
     }
 
+    backTop = () => {
+        debugger;
+        return this.refs.mainContent;
+    }
+
 
     render() {
         debugger;
         let userInfo = JSON.parse(localStorage.getItem('userInfo'));
-        let userName = userInfo?userInfo.loginName:'';
+        let userName = userInfo ? userInfo.loginName : '';
         // let userName = true;
         const HomePage = () => <div>Home Page</div>
 
@@ -192,9 +192,10 @@ export class mainPage extends React.Component {
                         </div>
                     </div>
                 </header>
-                <article style={this.state.showHeader ? { backgroundColor: '#f5f6f7' } : { paddingTop: 57, backgroundColor: '#fff' }}>
+                <article ref="mainContainer" style={this.state.showHeader ? { backgroundColor: '#f5f6f7' } : { paddingTop: 57, backgroundColor: '#fff' }}>
+                    {/* <BackTop visibilityHeight={400} target={this.refs.mainContainer} /> */}
                     <div className={styles.content}>
-                        <div id="content" className={styles.midContent}>
+                        <div className={styles.midContent}>
                             <HeaderRoute />
                         </div>
                     </div>
