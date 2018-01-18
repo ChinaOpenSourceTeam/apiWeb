@@ -54,7 +54,7 @@ export class mainPage extends React.Component {
             else if (nextProps.msgTip.type === 1) {
                 if (nextProps.msgTip.msg == "Request failed with status code 401") {
                     localStorage.removeItem('access_token');
-                    localStorage.removeItem('username');
+                    localStorage.removeItem('usernInfo');
                     this.props.history.push('/login');
                     message.error('登陆信息已过期，请重新登陆');
                 } else {
@@ -94,7 +94,7 @@ export class mainPage extends React.Component {
 
     handleUnload() {
         if (!(this.props.location.pathname == '/writeAticle')) {
-            localStorage.removeItem('username');
+            localStorage.removeItem('userInfo');
         }
     }
 
@@ -104,7 +104,7 @@ export class mainPage extends React.Component {
     }
 
     writeAticle = () => {
-        if (localStorage.getItem('username')) {
+        if (JSON.parse(localStorage.getItem('userInfo'))) {
             const w = window.open('http://localhost:8081/writeAticle');
             // w.location.href = 'http://www.chinaopensource.top:8081/writeAticle'
             // w.location.href = 'http://localhost:8081/writeAticle'
@@ -116,7 +116,8 @@ export class mainPage extends React.Component {
 
     render() {
         debugger;
-        let userName = localStorage.getItem('username');
+        let userInfo = JSON.parse(localStorage.getItem('userInfo'));
+        let userName = userInfo?userInfo.loginName:'';
         // let userName = true;
         const HomePage = () => <div>Home Page</div>
 
@@ -235,7 +236,7 @@ export class mainPage extends React.Component {
             .catch(function (err) {
                 message.error('退出失败！');
             })
-        localStorage.removeItem('username');
+        localStorage.removeItem('userInfo');
         this.props.history.push('/');
     }
 }

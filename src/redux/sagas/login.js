@@ -24,8 +24,9 @@ function* loginSubmit(action) {
             if (response.data.code !== 0)
                 yield put(act.loginFail());
             else {
+                debugger;
                 localStorage.setItem('access_token',response.data.data.token || '');
-                localStorage.setItem('username',response.data.data.user.loginName || '');
+                localStorage.setItem('userInfo',JSON.stringify(response.data.data.user) || '');
                 yield put(act.loginSuccess(response.data.data));    
             }
         }

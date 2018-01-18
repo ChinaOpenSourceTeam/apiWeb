@@ -1,6 +1,7 @@
 import React from 'react';
-import { Form, Input, Tooltip, Icon, Carousel, Row, Col, Button, Select } from 'antd';
-
+import { Form, Input, Tooltip, Icon, Carousel, Row, Col, Button, Select ,message} from 'antd';
+import axios from "axios";
+import { config } from "../../../utils/config";
 import styles from './articleInfo.css';
 
 // import { ArticleList } from '../../components/mainPage/articleList'
@@ -33,13 +34,27 @@ class AticleInfo extends React.Component {
         this.props.form.validateFields((err, values) => {
             let contnet = _self.props.Editor.getContent() || '';
             let tags = values.tags.join(',');
+            // debugger;
+            let userId = JSON.parse(localStorage.getItem('userInfo')).id;
             let articleInfo = {
+                "createUser":userId,
                 "title": values.title,
                 "tags": tags,
                 "content": contnet,
                 "status": type
             }
-            console.log(articleInfo,999999999999999);
+            
+            axios.post('/blog/saveBlog',articleInfo,config)
+            .then(function(res){
+                if (res.data.code == 0) {
+                    message.success('操作成功！');
+                } else {
+                    message.error('操作失败');
+                }
+            })
+            .catch(function(err){
+                message.error('操作失败'+err);
+            })
         });
     }
 
@@ -114,8 +129,8 @@ class AticleInfo extends React.Component {
                     </FormItem>
 
                     <div className={styles.publishPosition}>
-                        <button className={styles.save} htmlType="submit" onClick={this.articleSubmit.bind(this,'0')}>保存</button>
-                        <button className={styles.publish} htmlType="submit" onClick={this.articleSubmit.bind(this,'1')}>发布</button>
+                        <button className={styles.save} htmlType="submit" onClick={this.articleSubmit.bind(this,0)}>保存</button>
+                        <button className={styles.publish} htmlType="submit" onClick={this.articleSubmit.bind(this,1)}>发布</button>
                     </div>
 
                 </Form>
