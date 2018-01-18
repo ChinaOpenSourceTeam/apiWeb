@@ -105,9 +105,10 @@ export class mainPage extends React.Component {
 
     writeAticle = () => {
         if (JSON.parse(localStorage.getItem('userInfo'))) {
-            const w = window.open('http://localhost:8081/writeAticle');
+            // let url = 'http://localhost:8081/writeAticle';
+            let url = 'http://www.chinaopensource.top:8081/writeAticle';
+            const w = window.open(url);
             // w.location.href = 'http://www.chinaopensource.top:8081/writeAticle'
-            // w.location.href = 'http://localhost:8081/writeAticle'
         } else {
             message.info('请先登录！');
         }
