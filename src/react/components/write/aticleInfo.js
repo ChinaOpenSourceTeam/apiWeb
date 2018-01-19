@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, Input, Tooltip, Icon, Carousel, Row, Col, Button, Select ,message} from 'antd';
 import axios from "axios";
+import { Base64 } from 'js-base64';
 import { config } from "../../../utils/config";
 import styles from './articleInfo.css';
 
@@ -33,14 +34,15 @@ class AticleInfo extends React.Component {
         console.log(this.props);
         this.props.form.validateFields((err, values) => {
             let contnet = _self.props.Editor.getContent() || '';
+            let contentBase64 = Base64.encode(contnet);
             let tags = values.tags.join(',');
             // debugger;
             let userId = JSON.parse(localStorage.getItem('userInfo')).id;
             let articleInfo = {
                 "createUser":userId,
                 "title": values.title,
-                "tags": tags,
-                "content": contnet,
+                "tags": "1,2",
+                "content": contentBase64,
                 "status": type
             }
             
