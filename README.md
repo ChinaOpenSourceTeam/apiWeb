@@ -3,7 +3,7 @@ ract + redux + antd
 
 ## live demo
 
-* [diaochong(雕虫)](http://www.chinaopensource.top:8081)(demo) : 类blog门户网站
+* [diaochong(雕虫)](http://www.chinaopensource.top:8081)demo : 类blog门户网站
 
 * ![](https://github.com/ChinaOpenSourceTeam/apiWeb/blob/master/src/public/images/demo1.png)
 

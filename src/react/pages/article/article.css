@@ -1,15 +1,12 @@
 .row {
-    margin: 10px -15px;
-    padding: 0 40px;
-    background: #fff;
-    /*box-shadow: 0 0 8px rgba(0, 0, 0, .1);*/
-    vertical-align: middle;
-    /*border-radius: 1%;*/
+    margin: 20px -15px;
+    padding: 0 15px 0 26px;
 }
 
 .rowLeft {
     display: block;
-    min-width: 525px;
+    width: 620px;
+    min-width: 620px;
 }
 
 .rowRight {
