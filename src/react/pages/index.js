@@ -100,8 +100,8 @@ export class mainPage extends React.Component {
 
     writeAticle = () => {
         if (JSON.parse(localStorage.getItem('userInfo'))) {
-            // let url = 'http://localhost:8081/writeAticle';
-            let url = 'http://www.chinaopensource.top:8081/writeAticle';
+            let url = 'http://localhost:8081/writeAticle';
+            // let url = 'http://www.chinaopensource.top:8081/writeAticle';
             const w = window.open(url);
             // w.location.href = 'http://www.chinaopensource.top:8081/writeAticle'
         } else {
@@ -227,10 +227,10 @@ export class mainPage extends React.Component {
     }
 
     logOut() {
-        axios.post('system/login/signOut', {}, config)
+        axios.get('system/login/signOut', config)
             .then(function (res) {
                 if (res.data.code == 0) {
-                    // message.success('成功！');
+                    message.success('退出成功！');
                 } else {
                     message.error('退出失败！');
                 }

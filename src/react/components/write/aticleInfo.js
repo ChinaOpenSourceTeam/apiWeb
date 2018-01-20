@@ -15,8 +15,31 @@ class AticleInfo extends React.Component {
         this.state = {
             loading: false,
             size: 'large',
-            tags: ''
+            tags: '',
+            tagArr:[],
         };
+    }
+
+    componentDidMount(){
+        console.log(6666666);
+
+        axios.get('/node/findAllNodes',config)
+            .then(function(res){
+                // debugger;
+                console.log(res);
+                if (res.data.code == 0) {
+                    // message.success('操作成功！');
+                    //标签数据
+                    // let 
+
+                } else {
+                    message.error('操作失败');
+                }
+            })
+            .catch(function(err){
+                message.error('操作失败'+err);
+            })
+
     }
 
     handleChange = (value) => {
