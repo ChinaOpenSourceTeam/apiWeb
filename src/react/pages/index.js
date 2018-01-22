@@ -73,7 +73,7 @@ export class mainPage extends React.Component {
         }
     }
     componentWillUpdate(nextProps) {
-        
+
     }
 
     componentDidMount() {
@@ -100,8 +100,12 @@ export class mainPage extends React.Component {
 
     writeAticle = () => {
         if (JSON.parse(localStorage.getItem('userInfo'))) {
-            // let url = 'http://localhost:8081/writeAticle';
-            let url = 'http://www.chinaopensource.top:8081/writeAticle';
+            let url;
+            if (process.env.NODE_ENV === 'development') {
+                url = 'http://localhost:8081/writeAticle';
+            } else {
+                url = 'http://www.chinaopensource.top:8081/writeAticle';
+            }
             const w = window.open(url);
             // w.location.href = 'http://www.chinaopensource.top:8081/writeAticle'
         } else {

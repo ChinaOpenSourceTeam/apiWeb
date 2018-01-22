@@ -13,7 +13,13 @@ export class ArticleList extends React.Component {
     }
 
     articleDetail = ()=>{
-        window.open('http://localhost:8081/article');
+        let url;
+        if (process.env.NODE_ENV === 'development') {
+            url = 'http://localhost:8081/article';
+        } else {
+            url = 'http://www.chinaopensource.top:8081/article';
+        }
+        window.open(url);
     }
 
 
