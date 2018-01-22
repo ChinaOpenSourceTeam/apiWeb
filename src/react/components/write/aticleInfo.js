@@ -19,6 +19,22 @@ class AticleInfo extends React.Component {
         };
     }
 
+    componentDidMount(){
+        //请求tag list
+        axios.get('/node/findAllNodes',config)
+            .then(function(res){
+                console.log(res);
+                if (res.data.code == 0) {
+                    message.success('操作成功！');
+                } else {
+                    message.error('操作失败');
+                }
+            })
+            .catch(function(err){
+                message.error('操作失败'+err);
+            })
+    }
+
     handleChange = (value) => {
         console.log(`Selected: ${value}`);
         if (value.length > 2) {
