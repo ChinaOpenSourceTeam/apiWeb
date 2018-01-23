@@ -27,7 +27,7 @@ export default class Artice extends React.Component {
                         <Avatar size='size' style={{ color: '#f56a00', backgroundColor: '#fde3cf', fontSize: 12 }}>U</Avatar>
                         <span className={styles.name}>尤为</span>
                         <span className={styles.time}>2小时前</span>
-                        <span>{new Date()}</span>
+                        {/* <span>{new Date()}</span> */}
                     </a>
                 </div>
                 <article></article>
