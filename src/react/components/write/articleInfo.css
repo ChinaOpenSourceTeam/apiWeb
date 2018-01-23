@@ -33,3 +33,10 @@
 .save:hover {
     opacity: 0.7;
 }
+
+
+/* 编辑器全屏 */
+
+:global .openFullAll {
+    z-index: 10000;
+}
