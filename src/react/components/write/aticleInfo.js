@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, Input, Tooltip, Icon, Carousel, Row, Col, Button, Select ,message} from 'antd';
 import axios from "axios";
+import _ from 'lodash';
 import { Base64 } from 'js-base64';
 import { config } from "../../../utils/config";
 import styles from './articleInfo.css';
@@ -15,17 +16,24 @@ class AticleInfo extends React.Component {
         this.state = {
             loading: false,
             size: 'large',
-            tags: ''
+            tags: '',
+            tagList:[]
         };
     }
 
     componentDidMount(){
         //请求tag list
+        let _self = this;
         axios.get('/node/findAllNodes',config)
             .then(function(res){
-                console.log(res);
+                // console.log(res);
                 if (res.data.code == 0) {
-                    message.success('操作成功！');
+                    let tagArr = _.cloneDeep(res.data.data);
+                    let tagList = new Array();
+                    tagArr.map(function(item){
+                        tagList.push(<Option key={item.id}>{item.name}</Option>);
+                    });
+                    _self.setState({tagList:tagList});
                 } else {
                     message.error('操作失败');
                 }
@@ -140,8 +148,10 @@ class AticleInfo extends React.Component {
                                 placeholder="标签"
                                 onChange={this.handleChange}
                                 style={{ width: '100%' }}
+                                /* onSearch={} */
+                                tokenSeparators={[',']}
                             >
-                                {children}
+                                {this.state.tagList}
                             </Select>
                             )}
                     </FormItem>
