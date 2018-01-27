@@ -50,10 +50,6 @@ class addTag extends React.Component {
         });
     }
 
-    addTags = () => {
-
-    }
-
     render() {
         const { getFieldDecorator } = this.props.form;
 
