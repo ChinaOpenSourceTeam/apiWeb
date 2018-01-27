@@ -231,10 +231,10 @@ export class mainPage extends React.Component {
     }
 
     logOut() {
-        axios.post('system/login/signOut', {}, config)
+        axios.get('system/login/signOut', config)
             .then(function (res) {
                 if (res.data.code == 0) {
-                    // message.success('成功！');
+                    message.success('退出成功！');
                 } else {
                     message.error('退出失败！');
                 }

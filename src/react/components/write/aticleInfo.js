@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Input, Tooltip, Icon, Carousel, Row, Col, Button, Select ,message} from 'antd';
+import { Form, Input, Tooltip, Icon, Carousel, Row, Col, Button, Select, message } from 'antd';
 import axios from "axios";
 import _ from 'lodash';
 import { Base64 } from 'js-base64';
@@ -17,29 +17,29 @@ class AticleInfo extends React.Component {
             loading: false,
             size: 'large',
             tags: '',
-            tagList:[]
+            tagList: []
         };
     }
 
-    componentDidMount(){
+    componentDidMount() {
         //请求tag list
         let _self = this;
-        axios.get('/node/findAllNodes',config)
-            .then(function(res){
+        axios.get('/node/findAllNodes', config)
+            .then(function (res) {
                 // console.log(res);
                 if (res.data.code == 0) {
                     let tagArr = _.cloneDeep(res.data.data);
                     let tagList = new Array();
-                    tagArr.map(function(item){
+                    tagArr.map(function (item) {
                         tagList.push(<Option key={item.id}>{item.name}</Option>);
                     });
-                    _self.setState({tagList:tagList});
+                    _self.setState({ tagList: tagList });
                 } else {
                     message.error('操作失败');
                 }
             })
-            .catch(function(err){
-                message.error('操作失败'+err);
+            .catch(function (err) {
+                message.error('操作失败' + err);
             })
     }
 
@@ -63,25 +63,29 @@ class AticleInfo extends React.Component {
             // debugger;
             let userId = JSON.parse(localStorage.getItem('userInfo')).id;
             let articleInfo = {
-                "createUser":userId,
+                "createUser": userId,
                 "title": values.title,
                 "tags": "1,2",
                 "content": contentBase64,
                 "status": type
             }
-            
-            axios.post('/blog/saveBlog',articleInfo,config)
-            .then(function(res){
-                if (res.data.code == 0) {
-                    message.success('操作成功！');
-                } else {
-                    message.error('操作失败');
-                }
-            })
-            .catch(function(err){
-                message.error('操作失败'+err);
-            })
+
+            axios.post('/blog/saveBlog', articleInfo, config)
+                .then(function (res) {
+                    if (res.data.code == 0) {
+                        message.success('操作成功！');
+                    } else {
+                        message.error('操作失败');
+                    }
+                })
+                .catch(function (err) {
+                    message.error('操作失败' + err);
+                })
         });
+    }
+
+    addTags = ()=>{
+        
     }
 
     render() {
@@ -123,7 +127,7 @@ class AticleInfo extends React.Component {
                     <FormItem
                         {...formItemLayout}
                         label="文章标题:"
-                    >
+                        >
                         {getFieldDecorator('title', {
                             rules: [{
                                 required: true, message: '',
@@ -135,30 +139,36 @@ class AticleInfo extends React.Component {
                     <FormItem
                         {...formItemLayout}
                         label="文章标签:"
-                    >
-                        {getFieldDecorator('tags', {
-                            rules: [{
-                                required: true, message: '',
-                            }],
-                        })(
-                            <Select
-                                mode="multiple"
-                                size={size}
-                                maxTagCount={3}
-                                placeholder="标签"
-                                onChange={this.handleChange}
-                                style={{ width: '100%' }}
-                                /* onSearch={} */
-                                tokenSeparators={[',']}
-                            >
-                                {this.state.tagList}
-                            </Select>
-                            )}
+                        >
+                        <div className={styles.tagsBox}>
+                            {getFieldDecorator('tags', {
+                                rules: [{
+                                    required: true, message: '',
+                                }],
+                            })(
+                                <Select
+                                    mode="multiple"
+                                    size={size}
+                                    maxTagCount={3}
+                                    placeholder="标签"
+                                    onChange={this.handleChange}
+                                    style={{ width: '100%' }}
+                                    /* onSearch={} */
+                                    tokenSeparators={[',']}
+                                    >
+                                    {this.state.tagList}
+                                </Select>
+                                )}
+                            <Button type="primary" ghost title="新建标签" onClick={this.addTags}><Icon type="plus" /></Button>
+                        </div>
                     </FormItem>
 
+
+
+
                     <div className={styles.publishPosition}>
-                        <button className={styles.save} htmlType="submit" onClick={this.articleSubmit.bind(this,0)}>保存</button>
-                        <button className={styles.publish} htmlType="submit" onClick={this.articleSubmit.bind(this,1)}>发布</button>
+                        <button className={styles.save} htmlType="submit" onClick={this.articleSubmit.bind(this, 0)}>保存</button>
+                        <button className={styles.publish} htmlType="submit" onClick={this.articleSubmit.bind(this, 1)}>发布</button>
                     </div>
 
                 </Form>
