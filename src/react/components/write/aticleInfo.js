@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Input, Tooltip, Icon, Carousel, Row, Col, Button, Select, message } from 'antd';
+import { Form, Input, Tooltip, Icon, Carousel, Row, Col, Button, Select, message, Modal } from 'antd';
 import axios from "axios";
 import _ from 'lodash';
 import { Base64 } from 'js-base64';
@@ -84,8 +84,8 @@ class AticleInfo extends React.Component {
         });
     }
 
-    addTags = ()=>{
-        
+    addTags = () => {
+
     }
 
     render() {
@@ -162,16 +162,20 @@ class AticleInfo extends React.Component {
                             <Button type="primary" ghost title="新建标签" onClick={this.addTags}><Icon type="plus" /></Button>
                         </div>
                     </FormItem>
-
-
-
-
                     <div className={styles.publishPosition}>
                         <button className={styles.save} htmlType="submit" onClick={this.articleSubmit.bind(this, 0)}>保存</button>
                         <button className={styles.publish} htmlType="submit" onClick={this.articleSubmit.bind(this, 1)}>发布</button>
                     </div>
 
                 </Form>
+                <Modal
+                    title="新建标签"
+                    visible={this.state.visible}
+                    onOk={this.handleOk}
+                    onCancel={this.handleCancel}
+                    >
+                     
+                </Modal>
             </div>
         )
     }
