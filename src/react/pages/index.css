@@ -26,7 +26,7 @@ header {
     border-color: #f0f0f0;
 }
 
-article {
+section>article {
     padding-top: 57px;
     /*background-color: #fff;*/
     flex: 1;
