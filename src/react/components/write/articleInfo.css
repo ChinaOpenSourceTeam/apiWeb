@@ -43,6 +43,7 @@
 
 .tagsBox {
     display: flex;
+    align-items: center;
 }
 
 .tagsBox button {

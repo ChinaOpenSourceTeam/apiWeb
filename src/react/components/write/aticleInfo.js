@@ -5,6 +5,7 @@ import _ from 'lodash';
 import { Base64 } from 'js-base64';
 import { config } from "../../../utils/config";
 import styles from './articleInfo.css';
+import AddDataFormM from './addTag';
 
 // import { ArticleList } from '../../components/mainPage/articleList'
 const FormItem = Form.Item;
@@ -17,12 +18,17 @@ class AticleInfo extends React.Component {
             loading: false,
             size: 'large',
             tags: '',
-            tagList: []
+            tagList: [],
+            addModalVisible: false,//添加模态框状态
         };
     }
 
     componentDidMount() {
         //请求tag list
+        this.getAllTags();
+    }
+
+    getAllTags = () => {
         let _self = this;
         axios.get('/node/findAllNodes', config)
             .then(function (res) {
@@ -65,7 +71,7 @@ class AticleInfo extends React.Component {
             let articleInfo = {
                 "createUser": userId,
                 "title": values.title,
-                "tags": "1,2",
+                "tags": tags,
                 "content": contentBase64,
                 "status": type
             }
@@ -84,8 +90,16 @@ class AticleInfo extends React.Component {
         });
     }
 
-    addTags = () => {
+    changeModalState = () => {
+        this.setState({
+            addModalVisible: false,
+        });
+    }
 
+    addTags = () => {
+        this.setState({
+            addModalVisible: true,
+        });
     }
 
     render() {
@@ -114,11 +128,6 @@ class AticleInfo extends React.Component {
             },
         };
         const { size } = this.state;
-
-        const children = [];
-        for (let i = 10; i < 36; i++) {
-            children.push(<Option key={i.toString(36) + i}>{i.toString(36) + i}</Option>);
-        }
 
         return (
             <div >
@@ -168,14 +177,15 @@ class AticleInfo extends React.Component {
                     </div>
 
                 </Form>
-                <Modal
-                    title="新建标签"
-                    visible={this.state.visible}
-                    onOk={this.handleOk}
-                    onCancel={this.handleCancel}
-                    >
-                     
-                </Modal>
+                {this.state.addModalVisible ?
+                    <AddDataFormM
+                        {...this.props}
+                        ref="addDataFormM"
+                        tagList={this.state.tagList}
+                        getAllTags={this.getAllTags}
+                        addModalVisible={this.state.addModalVisible}
+                        changeModalState={this.changeModalState.bind(this)}
+                        /> : null}
             </div>
         )
     }
