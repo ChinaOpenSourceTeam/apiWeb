@@ -3,7 +3,9 @@ import { Carousel, Row, Col, Menu, Icon, Avatar, message } from 'antd';
 import axios from "axios";
 import { config } from "../../../utils/config";
 import { Base64 } from 'js-base64';
+import moment from 'moment'; 
 import styles from './article.css';
+
 
 
 // import { ArticleList } from '../../components/mainPage/articleList'
@@ -59,8 +61,6 @@ export default class Artice extends React.Component {
         debugger;
         return (
             <div className={styles.articleContent}>
-
-                
                     <div>
                         <h1 className={styles.title}>{this.state.initStatus ? this.state.articleInfo.blog.title : null}</h1>
                         <div className={styles.authorContent}>
@@ -70,7 +70,12 @@ export default class Artice extends React.Component {
                                     <a className={styles.follow}>
                                         <i className="fa fa-plus" aria-hidden="true"></i> 关注</a>
                                     <a className={styles.name}>{this.state.initStatus ? this.state.articleInfo.user.loginName : null}</a>
-                                    <p>写了2222.1k字 · 25.5k喜欢</p>
+                                    <p>
+                                        <span>{moment(this.state.initStatus ?this.state.articleInfo.blog.updateTime:'').format('YYYY.MM.DD HH:mm')}</span>
+                                        <span>字数 2000</span>
+                                        <span> 阅读 1000</span>
+                                        <span>喜欢 210</span>
+                                    </p>
                                 </li>
                             </ul>
                         </div>
