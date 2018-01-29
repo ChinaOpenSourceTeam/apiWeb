@@ -11,12 +11,23 @@ export class TagPlate extends React.Component {
         };
     }
 
+    tagSelect=(type)=>{
+        let url;
+        console.log(process.env.NODE_ENV+'process type');
+        if (process.env.NODE_ENV === 'development') {
+            url = 'http://localhost:8081/blogAssort';
+        } else {
+            url = 'http://www.chinaopensource.top:8081/blogAssort';
+        }
+        const w = window.open(url);
+    }
+
     render() {
 
         return (
             <div className={styles.tagContent}>
             <div>
-                 <a className={styles.tag}><div></div><span>@IT互联网</span></a>
+                 <a className={styles.tag} onClick={this.tagSelect.bind(this,'it')}><div></div><span>@IT互联网</span></a>
                  <a className={styles.tag}><div></div><span>人文社科</span></a>
                  <a className={styles.tag}><div></div><span>历史</span></a>
                  <a className={styles.tag}><div></div><span>热点新闻</span></a>

@@ -13,6 +13,7 @@ import HomePage from '../../react/pages/mianPage';
 import UserSetting from '../../react/pages/userManage/userSetting';
 import WriteAticle from '../../react/pages/write/writeAticle'
 import Article from '../../react/pages/article/article'
+import BlogAssort from '../../react/pages/blogAssort'
 
 import test from '../../react/pages/testPage'
 
@@ -61,6 +62,7 @@ export class HeaderRoute extends React.Component {
                     <Route path="/user" component={UserRoute} />
                     <Route path="/writeAticle" component={WriteAticle} />
                     <Route path="/article" component={Article} />
+                    <Route path="/blogAssort" component={BlogAssort} />
                     <Route component={HomePage} />
                 </Switch>
             </div>
