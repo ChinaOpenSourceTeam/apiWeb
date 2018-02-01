@@ -9,7 +9,7 @@ const articleListData = [];
 for(let i = 0;i<6;i++){
     articleListData.push({
         id:i,
-        createUser:'尤为',
+        createUserName:'尤为',
         updateTime:1516790751000,
         title:'花开后花又落 轮回也没结果',
         content:'那些什么你说的爱我,花开后花又落轮回也没结果,苔上雪告诉我你没归来过,独揽月下萤火照亮一纸寂寞,追忆那些什么你说的爱我 花开后花又落轮回也没结果 苔上雪告诉我你没归来过,花开后花又落轮回……演唱：许嵩 乘一叶扁舟入景随风望江畔渔火...',
@@ -53,16 +53,16 @@ export class ArticleList extends React.Component {
                     {this.state.articleListData.map((item,index)=>{
                         return(<li key={item.id}>
                         <a className={styles.userImg} id="userImg">
-                            <Avatar size='size' style={{ color: '#f56a00', backgroundColor: '#fde3cf', fontSize: 12 }}>{(item.createUser +'1').substr(0, 1)}</Avatar>
-                            <span className={styles.name}>{item.createUser}</span>
+                            <Avatar size='size' style={{ color: '#f56a00', backgroundColor: '#fde3cf', fontSize: 12 }}>{(item.createUserName +'').substr(0, 1)}</Avatar>
+                            <span className={styles.name}>{item.createUserName}</span>
                             {<span className={styles.time}>{moment(item.updateTime).format('YYYY.MM.DD HH:mm')}</span>}
                         </a>
                         <div className={styles.content}>
                             <div className={styles.characters}>
                                 <a onClick={this.articleDetail.bind(this)}><h2>{item.title}</h2></a>
-                                <p>
-                                {item.content.substring(0,160)}
-                            </p>
+                                <div>
+                                {item.content}
+                            </div>
                             </div>
                             <img src={zgf} alt="" />
                         </div>

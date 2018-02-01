@@ -23,7 +23,7 @@ export default class Artice extends React.Component {
 
     componentDidMount() {
         let _self = this;
-        let url = "/blog/56ec22c1-5030-4e3b-8509-066a440f8331?version=1"
+        let url = "/blog/eab32134-c778-4641-ba6e-482d9cf600a6?version=1"
         axios.get(url, config)
             .then(function (res) {
                 if (res.data.code == 0) {
@@ -42,19 +42,19 @@ export default class Artice extends React.Component {
 
     contentHtmlFormat = (articleContent) => {
         let content = Base64.decode(articleContent);//content是后台返回的未知的一长串字符串，可能是'<p>内容<div>一个div</div></p>',也可能是'内容\r\n任何格式'
-        let reg = new RegExp('^<([^>\s]+)[^>]*>(.*?<\/\\1>)?$');
-        let format = reg.test(content); //content有可能是有格式的（带html标签），也可能无格式
-        if (!format) {
-            content = content && content.split('\n').map((item, i) => <p key={i}>{item.replace(/(^\s*)|(\s*$)/g, "")}</p>);
-        } else {
-            content = content && content.replace(/\n/g, "<br />");
-            //带格式的可能含有换行的/n，要转化为<br />
-        }
+        // let reg = new RegExp('^<([^>\s]+)[^>]*>(.*?<\/\\1>)?$');
+        // let format = reg.test(content); //content有可能是有格式的（带html标签），也可能无格式
+        // if (!format) {
+        //     content = content && content.split('\n').map((item, i) => <p key={i}>{item.replace(/(^\s*)|(\s*$)/g, "")}</p>);
+        // } else {
+        //     content = content && content.replace(/\n/g, "<br />");
+        //     //带格式的可能含有换行的/n，要转化为<br />
+        // }
 
         let contentHtml1 = <article id='contentHtml' className='content' dangerouslySetInnerHTML={{ __html: content }}></article>;
         let contentHtml2 = <article id='contentHtml' className='content no-fomat'>{content}</article>;
-        let contentHtml = format ? contentHtml1 : contentHtml2;
-        return contentHtml;
+        // let contentHtml = format ? contentHtml1 : contentHtml2;
+        return contentHtml1;
     }
 
     render() {

@@ -61,7 +61,7 @@
     border-radius: 4px;
 }
 
-.characters p {
+.characters div {
     margin: 0 0 8px !important;
     font-size: 13px !important;
     line-height: 24px !important;
