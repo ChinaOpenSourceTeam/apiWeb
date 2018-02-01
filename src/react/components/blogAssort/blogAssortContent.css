@@ -1,13 +1,12 @@
 .articleContent {
     margin: 0 auto;
-    padding-top: 10px;
     padding-bottom: 40px;
     /* width: 620px; */
 }
 
 .authorContent {
     margin-bottom: 20px;
-    padding-top: 10px;
+    padding-bottom: 4px;
     font-size: 13px;
     text-align: center;
 }
@@ -34,11 +33,11 @@
 }
 
 :global #blogAssort .ant-avatar-lg {
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
     margin-right: 10px;
-    line-height: 60px;
-    border-radius: 20%;
+    line-height: 80px;
+    border-radius: 10%;
 }
 
 :global #blogAssort .ant-avatar-lg>* {
@@ -50,7 +49,7 @@
     height: 30px;
     /*width: 60px;*/
     line-height: 30px;
-    margin-top: 5px;
+    margin-top: 20px;
     padding: 0 14px;
     font-size: 13px;
     border: 1px solid #42c02e;
@@ -68,19 +67,21 @@
 }
 
 .name {
-    padding-top: 5px;
-    margin-right: 60px;
-    font-size: 17px;
+    padding-top: 10px;
+    padding-left: 40px;
+    margin-left: 60px;
+    font-size: 21px;
+    font-weight: 600;
     display: block;
     cursor: pointer;
     color: #333;
 }
 
 .authorContent p {
-    margin-top: 2px;
-    font-size: 12px;
+    font-size: 14px;
     color: #969696;
-    margin: 0 0 10px;
+    padding-left: 100px;
+    margin: 20px 0px 0 60px;
     display: block;
     /* -webkit-margin-before: 1em; */
     -webkit-margin-after: 1em;

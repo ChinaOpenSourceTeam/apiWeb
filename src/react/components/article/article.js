@@ -27,8 +27,8 @@ export default class Artice extends React.Component {
         axios.get(url, config)
             .then(function (res) {
                 if (res.data.code == 0) {
+                    console.log(res.data.data);                    
                     let content = _self.contentHtmlFormat(res.data.data.blog.content);
-                    console.log(content);
                     _self.setState({ articleInfo: res.data.data, content:content,initStatus: true });
                 } else {
                     message.error('请求失败！');
