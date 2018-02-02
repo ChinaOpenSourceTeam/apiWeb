@@ -157,7 +157,6 @@ class AticleInfo extends React.Component {
                             })(
                                 <Select
                                     mode="multiple"
-                                    
                                     maxTagCount={3}
                                     placeholder="标签"
                                     onChange={this.handleChange}
@@ -168,7 +167,7 @@ class AticleInfo extends React.Component {
                                     {this.state.tagList}
                                 </Select>
                                 )}
-                            <Button type="primary" ghost title="新建标签" onClick={this.addTags}><Icon type="plus" /></Button>
+                            <Button title="新建标签" onClick={this.addTags}><Icon type="plus" /></Button>
                         </div>
                     </FormItem>
                     <div className={styles.publishPosition}>
