@@ -32,6 +32,12 @@ export class ArticleList extends React.Component {
         }
     }
 
+    componentWillReceiveProps(nextProps){
+        if(nextProps.articleList.length>0){
+            this.setState({articleListData:nextProps.articleList});
+        }
+    }
+
     articleDetail = ()=>{
         let url;
         if (process.env.NODE_ENV === 'development') {
@@ -76,7 +82,7 @@ export class ArticleList extends React.Component {
                     })}
                     
                 </ul>
-                <a className={styles.articleMore}>更多...</a>
+                // <a className={styles.articleMore}>更多...</a>
             </div>
         )
     }

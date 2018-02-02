@@ -22,13 +22,15 @@ class SearchContent extends React.Component {
 
     componentDidMount() {
         let _self = this;
-        let param = pubFunc.GetQueryString('keyword');
-        console.log(param, 666);
-        let url = `/solr/findBlogBySolr?name=${param}`
+        let keyword = pubFunc.GetQueryString('keyword');
+        //搜索框赋值
+        document.getElementById("search_keyword").value = keyword;
+        console.log(keyword, 666);
+        let url = `/solr/findBlogBySolr?name=${keyword}`
         axios.get(url, config)
             .then(function (res) {
                 if (res.data.code == 0) {
-                    // console.log(res.data.data, 1000);
+                    console.log(res.data.data, 1000);
                     debugger;
                     if (res.data.data.length > 0) {
                         let blogList = [];
@@ -37,7 +39,6 @@ class SearchContent extends React.Component {
                         for (i in res.data.data) {
                             res.data.data[i].content = _self.contentHtmlFormat(res.data.data[i].content);
                         }
-                        console.log(res.data.data);
                         _self.setState({ articleInfo: res.data.data, content: res.data.data, initStatus: true });
                     }
                 } else {
