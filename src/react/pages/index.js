@@ -14,6 +14,7 @@ import { Button, Icon, Layout, message, Select, BackTop } from 'antd';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { config } from '../../utils/config';
+import {pubFunc} from '../../utils/pubFnc';
 import logo from '../../public/images/theme_logo.svg';
 import user from '../../public/images/vip.png';
 import * as act from '../../redux/actions/login';
@@ -78,6 +79,7 @@ export class mainPage extends React.Component {
 
     componentDidMount() {
         window.addEventListener('unload', this.handleUnload);
+        debugger;
         if (this.props.location.pathname == '/writeAticle') {
             this.setState({ showHeader: true });
         }
@@ -113,14 +115,27 @@ export class mainPage extends React.Component {
         }
     }
 
+    //全局搜索
+    searchGlobal = (e)=>{
+        let keyword = document.getElementById("search_keyword").value;
+        
+        if(keyword){
+            let url;
+            if (process.env.NODE_ENV === 'development') {
+                url = 'http://localhost:8081/search?keyword='+keyword;
+            } else {
+                url = 'http://www.chinaopensource.top:8081/search?keyword='+keyword;
+            }
+            const w = window.open(url);
+        }
+    }
+
     backTop = () => {
-        debugger;
         return this.refs.mainContent;
     }
 
-
     render() {
-        debugger;
+        // debugger;
         let userInfo = JSON.parse(localStorage.getItem('userInfo'));
         let userName = userInfo ? userInfo.loginName : '';
         // let userName = true;
@@ -149,8 +164,8 @@ export class mainPage extends React.Component {
                                 <li> <Link to="/downloadApp" style={{ color: '#333' }}><i className="fa fa-mobile" aria-hidden="true"></i>下载APP</Link></li>
                                 <li><div className={styles.searchBox} >
                                     <div style={{ display: 'flex' }}>
-                                        <input type="text" placeholder="你想要的..." />
-                                        <a href="" className={styles.searchGlass}><i className="fa fa-search" aria-hidden="true"></i></a>
+                                        <input id="search_keyword" type="text" placeholder="你想要的..." />
+                                        <a className={styles.searchGlass}><i className="fa fa-search" aria-hidden="true" onClick={(e)=>this.searchGlobal(e)}></i></a>
                                     </div>
                                 </div></li>
                             </ul>) : (<ul>
@@ -159,14 +174,14 @@ export class mainPage extends React.Component {
                                 <li><Link to="/message" style={{ color: '#333' }}>消息</Link></li>
                                 <li><div className={styles.searchBox} >
                                     <div style={{ display: 'flex' }}>
-                                        <input type="text" placeholder="你想要的..." />
-                                        <a href="" className={styles.searchGlass}><i className="fa fa-search" aria-hidden="true"></i></a>
+                                        <input id="search_keyword" type="text" placeholder="你想要的..."/>
+                                        <a className={styles.searchGlass}><i className="fa fa-search" aria-hidden="true" onClick={(e)=>this.searchGlobal(e)}></i></a>
                                     </div>
                                 </div></li>
                             </ul>)}
                         </div>
                         <div className={styles.headBar}>
-                            <Button href="" onClick={this.showHeadBar.bind(this)}>
+                            <Button onClick={this.showHeadBar.bind(this)}>
                                 <span style={{ fontSize: 16 }}>
                                     <i className="fa fa-bars" aria-hidden="true"></i>
                                     {this.state.miniDropMenu ? miniDropMenu : null}
@@ -200,7 +215,7 @@ export class mainPage extends React.Component {
                     {/* <BackTop visibilityHeight={400} target={this.refs.mainContainer} /> */}
                     <div className={styles.content}>
                         <div className={styles.midContent}>
-                            <HeaderRoute />
+                            <HeaderRoute {...this.props}/>
                         </div>
                     </div>
                 </article>
@@ -252,6 +267,7 @@ function mapStateToProps(state) {
     return {
         userInfo: state.Login.userInfo,
         msgTip: state.MsgTip,
+        GetQueryString:pubFunc.GetQueryString
     }
 }
 
@@ -263,5 +279,6 @@ function mapDispatchToProps(dispatch) {
         },
     }
 }
+
 export default connect(mapStateToProps, mapDispatchToProps)(mainPage);
 

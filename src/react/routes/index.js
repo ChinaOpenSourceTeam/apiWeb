@@ -14,6 +14,7 @@ import UserSetting from '../../react/pages/userManage/userSetting';
 import WriteAticle from '../../react/pages/write/writeAticle'
 import Article from '../../react/pages/article/article'
 import BlogAssort from '../../react/pages/blogAssort'
+import Search from '../../react/pages/search'
 
 import test from '../../react/pages/testPage'
 
@@ -28,6 +29,7 @@ const Discover = () => <div>Discover Page</div>
 const Fork = () => <div>Fork Page</div>
 
 export default class Routes extends Component {
+    
     componentDidMount() {
 
     }
@@ -51,6 +53,10 @@ export default class Routes extends Component {
 
 export class HeaderRoute extends React.Component {
 
+    constructor(props) {
+        super(props);
+    }
+
     render() {
         return (
             <div style={{ width: '100%', height: '100%'}} className="menu">
@@ -63,6 +69,7 @@ export class HeaderRoute extends React.Component {
                     <Route path="/writeAticle" component={WriteAticle} />
                     <Route path="/article" component={Article} />
                     <Route path="/blogAssort" component={BlogAssort} />
+                    <Route path="/search" component={Search} />
                     <Route component={HomePage} />
                 </Switch>
             </div>

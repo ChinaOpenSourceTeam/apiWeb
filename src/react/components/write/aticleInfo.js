@@ -157,7 +157,7 @@ class AticleInfo extends React.Component {
                             })(
                                 <Select
                                     mode="multiple"
-                                    size={size}
+                                    
                                     maxTagCount={3}
                                     placeholder="标签"
                                     onChange={this.handleChange}

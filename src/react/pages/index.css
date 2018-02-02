@@ -80,6 +80,7 @@ section>article {
     color: #333;
     list-style-type: none;
     margin-top: 20px;
+    padding-left: 0;
 }
 
 @media(min-width:1440px) {
@@ -133,9 +134,14 @@ section>article {
     background: #f0f0f0 !important;
 }*/
 
-.headerContent ul>li :focus {
+.headerContent ul>li> :focus {
     text-decoration: none;
     color: #ea6f5a !important;
+}
+
+.headerContent div>div>input :focus {
+    text-decoration: none;
+    color: #333 !important;
 }
 
 .midContent {
