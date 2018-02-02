@@ -158,7 +158,7 @@ class AddDataFormM extends React.Component {
     handleAddTags = (e) => {
         let _self = this;
         //获取被antd form 包装的表单
-        let values = _self.refs.AddTag.refs.wrappedComponent.refs.formWrappedComponent.getFormContent();
+        let values = _self.refs.AddTag.refs.wrappedComponent.getFormContent();
         if (values.name && values.pids) {
             let userId = JSON.parse(localStorage.getItem('userInfo')).id;
             let pids = values.pids.join(',');

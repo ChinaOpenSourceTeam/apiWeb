@@ -78,6 +78,8 @@ section>article {
     flex-direction: row;
     font-size: 17px;
     color: #333;
+    list-style-type: none;
+    margin-top: 20px;
 }
 
 @media(min-width:1440px) {
