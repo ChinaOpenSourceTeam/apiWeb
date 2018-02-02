@@ -4,13 +4,14 @@ import moment from 'moment';
 import axios from "axios";
 import { config } from "../../../utils/config";
 import { Base64 } from 'js-base64';
+import { pubFunc } from '../../../utils/pubFnc';
 
-import styles from './blogAssortContent.css';
+import styles from './searchContent.css';
 import { ArticleList } from '../mainPage/articleList.js';
 const TabPane = Tabs.TabPane;
 
 
-class BlogAssortContent extends React.Component {
+class SearchContent extends React.Component {
 
     constructor(props) {
         super(props);
@@ -21,18 +22,23 @@ class BlogAssortContent extends React.Component {
 
     componentDidMount() {
         let _self = this;
-        let url = `/node/${1}`
+        let param = pubFunc.GetQueryString('keyword');
+        console.log(param, 666);
+        let url = `/solr/findBlogBySolr?name=${param}`
         axios.get(url, config)
             .then(function (res) {
                 if (res.data.code == 0) {
-                    if (res.data.data.blogList.length > 0) {
+                    // console.log(res.data.data, 1000);
+                    debugger;
+                    if (res.data.data.length > 0) {
                         let blogList = [];
                         let contnet = '';
                         let i = 0;
-                        for (i in res.data.data.blogList) {
-                            res.data.data.blogList[i].content = _self.contentHtmlFormat(res.data.data.blogList[i].content);
+                        for (i in res.data.data) {
+                            res.data.data[i].content = _self.contentHtmlFormat(res.data.data[i].content);
                         }
-                        _self.setState({ articleInfo: res.data.data, content: res.data.data.blogList, initStatus: true });
+                        console.log(res.data.data);
+                        _self.setState({ articleInfo: res.data.data, content: res.data.data, initStatus: true });
                     }
                 } else {
                     message.error('请求失败！');
@@ -49,7 +55,7 @@ class BlogAssortContent extends React.Component {
         content = content.replace(/<.*?>/ig, "");
         content = content.replace(/<\/?.+?>/g, "");
         content = content.replace(/[\r\n]/g, "");
-        content.substr(0,160);
+        content.substr(0, 160);
 
         //content是后台返回的未知的一长串字符串，可能是'<p>内容<div>一个div</div></p>',也可能是'内容\r\n任何格式'
         // let reg = new RegExp('^<([^>\s]+)[^>]*>(.*?<\/\\1>)?$');
@@ -61,7 +67,7 @@ class BlogAssortContent extends React.Component {
         //     //带格式的可能含有换行的/n，要转化为<br />
         // }
 
-        let contentHtml1 = <article id='contentHtml' className='content' style={{ fontSize: 14, letterSpacing: 0,marginTop:0 }} dangerouslySetInnerHTML={{ __html: content }}></article>;
+        let contentHtml1 = <article id='contentHtml' className='content' style={{ fontSize: 14, letterSpacing: 0, marginTop: 0 }} dangerouslySetInnerHTML={{ __html: content }}></article>;
         let contentHtml2 = <article id='contentHtml' className='content no-fomat'>{content}</article>;
         // let contentHtml = format ? contentHtml1 : contentHtml2;
         return contentHtml1;
@@ -73,7 +79,7 @@ class BlogAssortContent extends React.Component {
                 <div className={styles.authorContent}>
                     <ul>
                         <li>
-                            <a className={styles.userImg} id="blogAssort"><Avatar shape="square" size='large' style={{ color: '#f56a00', backgroundColor: '#f0f0f0', fontSize: 16 }}>{this.state.initStatus ? this.state.articleInfo.user.loginName.substr(0, 1) : null}</Avatar></a>
+                            <a className={styles.userImg} id="blogAssort"><Avatar shape="square" size='large' style={{ color: '#f56a00', backgroundColor: '#f0f0f0', fontSize: 16 }}>{this.state.initStatus ? (this.state.articleInfo.createUserName ? this.state.articleInfo.createUserName.substr(0, 1) : '') : ''}</Avatar></a>
                             <a className={styles.follow}>
                                 <i className="fa fa-plus" aria-hidden="true"></i> 关注</a>
                             <a className={styles.name}>@IT互联网</a>
@@ -85,14 +91,7 @@ class BlogAssortContent extends React.Component {
                     </ul>
                 </div>
                 <div>
-                    <Tabs defaultActiveKey="2">
-                        <TabPane tab={<span><Icon type="apple" />最新文章</span>} key="1">
-                            <ArticleList articleList={this.state.content} />
-                        </TabPane>
-                        <TabPane tab={<span><Icon type="android" />热门文章</span>} key="2">
-                            <ArticleList articleList={this.state.content} />
-                        </TabPane>
-                    </Tabs>
+                    <ArticleList articleList={this.state.content} />
                 </div>
             </div>
         )
@@ -100,4 +99,4 @@ class BlogAssortContent extends React.Component {
 }
 
 
-export default BlogAssortContent;
+export default SearchContent;

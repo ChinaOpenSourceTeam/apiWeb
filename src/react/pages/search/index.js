@@ -1,14 +1,12 @@
 import React from 'react';
 import { Carousel, Row, Col ,Tabs,} from 'antd';
 
-import {pubFunc} from '../../../utils/pubFnc'
+import {pubFunc} from '../../../utils/pubFnc';
 import styles from './index.css';
 
-import  BlogAssortContent from '../../components/blogAssort/blogAssortContent';
-import  SiderContent from '../../components/blogAssort/siderContent';
+import  SearchContent from '../../components/search/searchContent';
+import  SiderContent from '../../components/search/siderContent';
 
-
-// import { ArticleList } from '../../components/mainPage/articleList'
 export default class Search extends React.Component {
 
     constructor(props) {
@@ -21,7 +19,7 @@ export default class Search extends React.Component {
 
     componentDidMount(){
         let param = pubFunc.GetQueryString('keyword');
-        console.log(param);
+        // console.log(param);
     }
 
     render() {
@@ -30,11 +28,10 @@ export default class Search extends React.Component {
             <div className={styles.row}>
                 <Row className={styles.leftRowList} gutter={24}>
                 <Col span={16}  style={{paddingRight:20}} className={styles.rowLeft}>
-                        {/* <BlogAssortContent />                          */}
-                        seacher data
+                        <SearchContent />     
                     </Col>
                     <Col span={8}  style={{paddingLeft:20}} className={styles.rowRight}>
-                        {/* <SiderContent /> */}
+                        <SiderContent />
                     </Col>
                 </Row>
             </div>
