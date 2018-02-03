@@ -1,11 +1,11 @@
 .articleContent {
     margin: 0 auto;
-    padding-bottom: 40px;
+    padding-bottom: 10px;
     /* width: 620px; */
 }
 
 .authorContent {
-    margin-bottom: 20px;
+    /*margin-bottom: 20px;*/
     padding-bottom: 4px;
     font-size: 13px;
     text-align: center;
@@ -80,8 +80,8 @@
 .authorContent p {
     font-size: 14px;
     color: #969696;
-    padding-left: 100px;
-    margin: 20px 0px 0 60px;
+    padding-left: 0;
+    margin: 20px 0px;
     display: block;
     /* -webkit-margin-before: 1em; */
     -webkit-margin-after: 1em;

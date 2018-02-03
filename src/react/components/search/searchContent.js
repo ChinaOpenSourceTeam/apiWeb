@@ -80,13 +80,10 @@ class SearchContent extends React.Component {
                 <div className={styles.authorContent}>
                     <ul>
                         <li>
-                            <a className={styles.userImg} id="blogAssort"><Avatar shape="square" size='large' style={{ color: '#f56a00', backgroundColor: '#f0f0f0', fontSize: 16 }}>{this.state.initStatus ? (this.state.articleInfo.createUserName ? this.state.articleInfo.createUserName.substr(0, 1) : '') : ''}</Avatar></a>
-                            <a className={styles.follow}>
-                                <i className="fa fa-plus" aria-hidden="true"></i> 关注</a>
-                            <a className={styles.name}>@IT互联网</a>
                             <p>
-                                <span>文章 2000篇</span>
-                                <span>1000 人关注</span>
+                                <span>综合排序：</span>
+                                <span>热门文章</span>
+                                <span>最新文章</span>
                             </p>
                         </li>
                     </ul>
