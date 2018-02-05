@@ -3,7 +3,8 @@ import { Carousel, Row, Col } from 'antd';
 
 import styles from './article.css';
 
-import  ArticleContent from '../../components/article/article';
+import ArticleContent from '../../components/article/article';
+import Comment from '../../components/comment/index.js';
 
 export default class Aticle extends React.Component {
 
@@ -21,6 +22,7 @@ export default class Aticle extends React.Component {
                 <Row className={styles.leftRowList} gutter={24}>
                     <Col span={24} className={styles.rowLeft}>
                         <ArticleContent />
+                        <Comment />
                     </Col>
                     {/* <Col span={8} style={{paddingLeft:20}} className={styles.rowRight}>
                         {<UserMenu />                         }

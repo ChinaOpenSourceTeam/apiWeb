@@ -5,10 +5,7 @@ import { config } from "../../../utils/config";
 import { Base64 } from 'js-base64';
 import moment from 'moment'; 
 import styles from './article.css';
-
-
-
-// import { ArticleList } from '../../components/mainPage/articleList'
+import { pubFunc } from '../../../utils/pubFnc';
 
 export default class Artice extends React.Component {
 
@@ -23,7 +20,9 @@ export default class Artice extends React.Component {
 
     componentDidMount() {
         let _self = this;
-        let url = "/blog/eab32134-c778-4641-ba6e-482d9cf600a6?version=1"
+        let articleId = pubFunc.GetQueryString('articleId');
+        let url = `/blog/${articleId}?version=1`;
+        console.log(url);
         axios.get(url, config)
             .then(function (res) {
                 if (res.data.code == 0) {
@@ -84,8 +83,6 @@ export default class Artice extends React.Component {
                         {this.state.initStatus ? this.state.content : null}
                     </article>
                     <footer></footer>
-                
-
             </div>
 
         )
