@@ -1,13 +1,9 @@
 import React from 'react';
-import { Carousel, Row, Col } from 'antd';
+import {Row} from 'antd';
 
 import styles from './userSetting.css';
+import UserMenu from './usermenu';
 
-import  UserInfo from '../../components/userManage/userSetting/userInfo';
-import  UserMenu from '../../components/userManage/userSetting/usermenu';
-
-
-// import { ArticleList } from '../../components/mainPage/articleList'
 
 export default class UserSetting extends React.Component {
 
@@ -22,15 +18,7 @@ export default class UserSetting extends React.Component {
 
         return (
             <div className={styles.row}>
-                <Row className={styles.leftRowList} gutter={24}>
-                <Col span={8}  style={{paddingRight:20}} className={styles.rowRight}>
-                        <UserMenu />                         
-                    </Col>
-                    <Col span={16}  style={{paddingLeft:20}} className={styles.rowLeft}>
-                        <UserInfo />
-                    </Col>
-                    
-                </Row>
+                <Row className={styles.leftRowList} gutter={24}> <UserMenu/> </Row>
             </div>
         )
     }
