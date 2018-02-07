@@ -1,0 +1,17 @@
+.userMenuList {
+    font-size: 16px;
+}
+
+
+/*.userMenuList :global .ant-menu-inline {
+    border-left: 1px solid #e9e9e9!important;
+    border-right: 0px solid #e9e9e9!important;
+}
+
+.userMenuList :global .ant-menu-item-selected {
+    border-left: 3px solid !important;
+}
+
+.userMenuList :global .ant-menu-item:after {
+    border-right: 0px solid #108ee9;
+}*/
