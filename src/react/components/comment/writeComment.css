@@ -1,0 +1,25 @@
+ .contnetMain {
+     display: flex;
+     flex-direction: column;
+     justify-content: space-between;
+     margin: .5rem 0 0 3.5rem;
+     border-bottom: 1px solid #f0f0f0;
+ }
+ 
+ .head {
+     font-weight: 700;
+ }
+ 
+ .commentInfo {
+     position: relative;
+     margin-bottom: 40px;
+     padding: 20px;
+     border: 1px solid #f8f9fa;
+     background: #f8f9fa;
+     border-radius: 4px;
+ }
+ 
+ .commentBtn {
+     padding: 6px 0;
+     text-align: end;
+ }
