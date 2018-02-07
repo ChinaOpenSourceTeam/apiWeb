@@ -6,6 +6,8 @@ import { config } from "../../../utils/config";
 import moment from 'moment';
 import styles from './index.css';
 
+import WriteComment from './writeComment';
+
 
 export default class Comment extends React.Component {
 
@@ -54,8 +56,11 @@ export default class Comment extends React.Component {
         }];
         return (
             <div className={styles.commentList}>
-                <p style={{margin:'1.3rem 0',fontSize: '1.3rem',fontWeight: 500,textAlign: 'center',
-                color: '#909090'}}>评  论</p>
+                <p style={{
+                    margin: '1.3rem 0', fontSize: '1.3rem', fontWeight: 500, textAlign: 'center',
+                    color: '#909090'
+                }}>评  论</p>
+                <WriteComment />
                 {commentList.length > 0 ?
                     commentList.map((item, index) => {
                         return (
