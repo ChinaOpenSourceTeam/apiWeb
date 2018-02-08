@@ -32,15 +32,15 @@ class UserInfo extends React.Component {
         }
     }
 
-    fetchData = (e) => {
-        e.preventDefault();
-        let url = `/system/user/findUserById/`;
+    componentWillMount() {
+        let url = `/system/user/findUserById`;
         axios.get(url, config).then(response => {
-            this.setState({data: response.data.data})
+            console.log(response);
+            this.setState({data: response.data.data.user})
         }).catch(err => {
             console.log(err);
         })
-    };
+    }
 
     handleSubmit = (e) => {
         e.preventDefault();
@@ -66,7 +66,7 @@ class UserInfo extends React.Component {
         };
         return (
             <div>
-                {this.fetchData} <Button onClick={this.fetchData}>点击</Button> <Form onSubmit={this.handleSubmit}>
+                <Form onSubmit={this.handleSubmit}>
                 <FormItem {...formItemLayout} label="头像"> <span
                     className={styles.wordName}>{data.nickName.substr(0, 1)}</span> </FormItem>
                 <FormItem {...formItemLayout} label="昵称">
