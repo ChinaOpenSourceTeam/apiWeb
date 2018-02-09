@@ -38,14 +38,14 @@ export class ArticleList extends React.Component {
         }
     }
 
-    articleDetail = (articleId) => {
+    articleDetail = (article)=> {
 
-        if (articleId) {
+        if (article.id) {
             let url;
             if (process.env.NODE_ENV === 'development') {
-                url = 'http://localhost:8081/article?articleId=' + articleId;
+                url = 'http://localhost:8081/article?uuid=' + article.uuid + '&articleId=' + article.id;
             } else {
-                url = 'http://www.chinaopensource.top:8081/article?articleId=' + articleId;
+                url = 'http://www.chinaopensource.top:8081/article?uuid=' + article.uuid +'&articleId=' + article.id;
             }
             const w = window.open(url);
         }
@@ -68,7 +68,7 @@ export class ArticleList extends React.Component {
                             </a>
                             <div className={styles.content}>
                                 <div className={styles.characters}>
-                                    <a onClick={this.articleDetail.bind(this, item.uuid)}><h2>{item.title}</h2></a>
+                                    <a onClick={this.articleDetail.bind(this, item)}><h2>{item.title}</h2></a>
                                     <div>
                                         {item.content}
                                     </div>

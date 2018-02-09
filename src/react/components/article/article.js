@@ -20,7 +20,8 @@ export default class Artice extends React.Component {
 
     componentDidMount() {
         let _self = this;
-        let articleId = pubFunc.GetQueryString('articleId');
+        let articleId = pubFunc.GetQueryString('uuid');
+        console.log(articleId);
         let url = `/blog/${articleId}?version=1`;
         console.log(url);
         axios.get(url, config)

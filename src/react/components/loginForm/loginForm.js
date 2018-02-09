@@ -30,7 +30,7 @@ class LoginF extends React.Component {
             loginFlag: 0,
             reg_loading: 0,
             loginTable: true,
-            regFlag:false,
+            regFlag: false,
             imgFetchTime: moment().format('X'),//注册验证码获取时间
         };
         //this.handleSubmit=this.handleSubmit.bind(this);
@@ -61,8 +61,8 @@ class LoginF extends React.Component {
         }
     }
 
-    componentWillUpdate(nextProps,nextState){
-        if(nextState.regFlag){
+    componentWillUpdate(nextProps, nextState) {
+        if (nextState.regFlag) {
             nextProps.location.pathname = '/login';
             nextProps.history.push(nextProps.location);
             nextState.regFlag = false;
@@ -110,17 +110,17 @@ class LoginF extends React.Component {
                 };
                 this.setState({ loading: true, loginFlag: 0 });
                 // this.props.submitRegClick(param);
-                axios.post('/system/user/saveUser',param, config)
+                axios.post('/system/user/saveUser', param, config)
                     .then(function (res) {
-                        if(res.data.code == 0){
+                        if (res.data.code == 0) {
                             message.success('注册成功！');
-                            this.setState({regFlag:true});
-                        }else{
-                            message.error('注册失败！');                            
+                            _self.setState({ regFlag: true });
+                        } else {
+                            message.error('注册失败！');
                         }
                     })
                     .catch(function (err) {
-                        message.error('注册失败！' +err);
+                        message.error('注册失败！' + err);
                     })
             }
         });
@@ -262,9 +262,9 @@ class LoginF extends React.Component {
                                     {
                                         required: true,
                                         message: '邮箱!'
-                                    },{
-                                        pattern:/^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/,
-                                        message:'邮箱格式不正确'
+                                    }, {
+                                        pattern: /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/,
+                                        message: '邮箱格式不正确'
                                     }
                                 ]
                             })(

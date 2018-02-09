@@ -49,7 +49,10 @@ class BlogAssortContent extends React.Component {
         content = content.replace(/<.*?>/ig, "");
         content = content.replace(/<\/?.+?>/g, "");
         content = content.replace(/[\r\n]/g, "");
+        
         content.substr(0,160);
+
+        console.log(content,6666);
 
         //content是后台返回的未知的一长串字符串，可能是'<p>内容<div>一个div</div></p>',也可能是'内容\r\n任何格式'
         // let reg = new RegExp('^<([^>\s]+)[^>]*>(.*?<\/\\1>)?$');

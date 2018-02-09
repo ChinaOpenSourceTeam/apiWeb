@@ -17,14 +17,12 @@ function* loginSubmit(action) {
             reqParam: action.payload
         };
         const response = yield call(dataService.postRequest, param);
-        debugger;
         //处理返回结果
         if (response) {
             debugger;
             if (response.data.code !== 0)
                 yield put(act.loginFail());
             else {
-                debugger;
                 localStorage.setItem('access_token',response.data.data.token || '');
                 localStorage.setItem('userInfo',JSON.stringify(response.data.data.user) || '');
                 yield put(act.loginSuccess(response.data.data));    
