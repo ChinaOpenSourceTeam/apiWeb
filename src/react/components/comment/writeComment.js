@@ -43,7 +43,8 @@ export default class WriteComment extends React.Component {
     }
 
     saveComment = () => {
-        let _self = this;
+        if(localStorage.getItem('userInfo')){
+            let _self = this;
         let articleId = pubFunc.GetQueryString('articleId');
         let commentObj = {
             "blogId": articleId,
@@ -63,6 +64,10 @@ export default class WriteComment extends React.Component {
             .catch(function (err) {
                 message.error('评论失败！' + err);
             })
+        }else{
+            message.info('请先登录！');
+        }
+        
 
     }
 
