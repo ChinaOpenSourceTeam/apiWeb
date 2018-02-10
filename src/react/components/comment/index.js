@@ -55,11 +55,12 @@ export default class Comment extends React.Component {
                 {this.state.commentList.length > 0 ?
                     this.state.commentList.map((item, index) => {
                         return (
-                            <div className={styles.commentInfo}>
+                            <div className={styles.commentInfo} key={index}>
                                 <Avatar size='size' style={{ position: 'absolute', color: '#f56a00', backgroundColor: '#fde3cf', fontSize: 12 }}>{(item.createUserName + '').substr(0, 1)}</Avatar>
                                 <div className={styles.contnetMain}>
                                     <div className={styles.head}>
-                                        <div className={styles.userName}>{item.createUserName}</div>
+                                        <span className={styles.userName}>{item.createUserName}</span>
+                                        <span className={styles.createTime}>{item.createTime?moment(item.createTime).format('YYYY.MM.DD HH:mm'):''}</span>
                                     </div>
                                     <div className={styles.content}>{item.content}</div>
                                     <div className={styles.footer}>

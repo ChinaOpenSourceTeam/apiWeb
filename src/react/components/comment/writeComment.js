@@ -18,13 +18,13 @@ export default class WriteComment extends React.Component {
             showBtn: {
                 marginRight: 0,
                 display: 'none',
-                commentContent:''
+                commentContent: ''
             },
         };
     }
 
     componentDidMount() {
-        
+
     }
 
     focusText = () => {
@@ -33,42 +33,55 @@ export default class WriteComment extends React.Component {
 
     blurText = (e) => {
         let showBtnFlag = { marginRight: 0, display: 'none' };
-        if(e.target.value){
+        if (e.target.value) {
             showBtnFlag = { marginRight: 0 };
+            this.setState({
+                showBtn: showBtnFlag,
+            });
         }
-        this.setState({ 
-            showBtn: showBtnFlag,
-            commentContent:e.target.value || ''
-     });
     }
 
     saveComment = () => {
-        if(localStorage.getItem('userInfo')){
-            let _self = this;
-        let articleId = pubFunc.GetQueryString('articleId');
-        let commentObj = {
-            "blogId": articleId,
-            "content": this.state.commentContent,
-            "createUser": JSON.parse(localStorage.getItem('userInfo')).id || '',
-        }
-        let url = `/comment/saveComment`;
-        axios.post(url, commentObj,config)
-            .then(function (res) {
-                if (res.data.code == 0) {
-                    message.success('评论成功！');
-                    _self.props.getCommentList();
-                } else {
-                    message.error('评论失败！');
+        if (this.state.commentContent) {
+            if (localStorage.getItem('userInfo')) {
+                let _self = this;
+                let articleId = pubFunc.GetQueryString('articleId');
+                let commentObj = {
+                    "blogId": articleId,
+                    "content": this.state.commentContent,
+                    "createUser": JSON.parse(localStorage.getItem('userInfo')).id || '',
                 }
-            })
-            .catch(function (err) {
-                message.error('评论失败！' + err);
-            })
-        }else{
-            message.info('请先登录！');
+                let url = `/comment/saveComment`;
+                axios.post(url, commentObj, config)
+                    .then(function (res) {
+                        if (res.data.code == 0) {
+                            message.success('评论成功！');
+                            _self.setState({commentContent:'',showBtn: { marginRight: 0, display: 'none' }});
+                            _self.props.getCommentList();
+                        } else {
+                            message.error('评论失败！');
+                        }
+                    })
+                    .catch(function (err) {
+                        message.error('评论失败！' + err);
+                    })
+            } else {
+                message.info('请先登录！');
+            }
         }
-        
+    }
 
+    cancelComment = () => {
+        this.setState({
+            showBtn: { marginRight: 0, display: 'none' },
+            commentContent: ''
+        });
+    }
+
+    commentChange = (e) => {
+        this.setState({
+            commentContent: e.target.value || ''
+        });
     }
 
     render() {
@@ -79,9 +92,9 @@ export default class WriteComment extends React.Component {
                     <Avatar size='large' style={{ position: 'absolute', color: '#f56a00', backgroundColor: '#fde3cf', fontSize: 12, marginTop: 4 }}>{'liqwei'.substr(0, 1)}</Avatar>
                     <div className={styles.contnetMain}>
                         <div className={styles.head}>
-                            <TextArea placeholder="说你想说的" autosize={{ minRows: 2, maxRows: 6 }} onFocus={this.focusText} onBlur={(e) => this.blurText(e)} />
+                            <TextArea placeholder="说你想说的" autosize={{ minRows: 2, maxRows: 6 }} onFocus={this.focusText} onBlur={(e) => this.blurText(e)} value={this.state.commentContent} onChange={(e) => this.commentChange(e)} />
                             <div className={styles.commentBtn} style={this.state.showBtn}>
-                                <Button type="">取消</Button>
+                                <Button type="" onClick={this.cancelComment}>取消</Button>
                                 <Button type="primary" style={{ marginLeft: 4 }} onClick={this.saveComment}>确定</Button>
                             </div>
                         </div>
