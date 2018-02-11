@@ -10,7 +10,6 @@
 
 import React from 'react';
 import styles from './loginForm.css';
-// import logImg from "../../../public/images/landun_logo.png";
 import logImg from "../../../idea_large.svg";
 import { Form, Icon, Input, Button, Checkbox, Tooltip, message } from 'antd';
 import { config } from '../../../utils/config'
@@ -20,7 +19,6 @@ import moment from 'moment';
 const FormItem = Form.Item;
 
 axios.defaults.headers.common['Authorization'] = localStorage.getItem('access_token');
-// axios.defaults.withCredentials = true;
 
 class LoginF extends React.Component {
     constructor(props) {
