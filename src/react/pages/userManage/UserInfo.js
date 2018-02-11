@@ -5,6 +5,7 @@ import axios from 'axios';
 import styles from './userInfo.css';
 import {config} from "../../../utils/config";
 
+axios.defaults.headers.common['Authorization'] = localStorage.getItem('access_token');
 const FormItem = Form.Item;
 
 class UserInfo extends React.Component {
@@ -46,10 +47,9 @@ class UserInfo extends React.Component {
         e.preventDefault();
         this.props.form.validateFieldsAndScroll((err, values) => {
             if (!err) {
-                console.log(values);
                 let leftObj = {};
-                values.id = this.state.data.id;
-                axios.post('/system/user/updateUser', values).then(function (response) {
+                values.age = Number(values.age);
+                axios.put('/system/user/updateUser', values, config).then(function (response) {
                     console.log(response);
                 }).catch(err => console.log(err));
             }
@@ -66,69 +66,67 @@ class UserInfo extends React.Component {
         };
         return (
             <div>
-                <Form onSubmit={this.handleSubmit}>
-                <FormItem {...formItemLayout} label="头像"> <span
+                <Form onSubmit={this.handleSubmit}> <FormItem {...formItemLayout} label="头像"> <span
                     className={styles.wordName}>{data.nickName.substr(0, 1)}</span> </FormItem>
-                <FormItem {...formItemLayout} label="昵称">
-                    {getFieldDecorator('nickName', {
-                        initialValue: data.nickName,
-                        rules: [{required: true, message: 'Please input your username!'}],
-                    })(
-                        <Input className="nickName"/>
-                    )}
+                    <FormItem {...formItemLayout} label="昵称">
+                        {getFieldDecorator('nickName', {
+                            initialValue: data.nickName,
+                            rules: [{required: true, message: 'Please input your username!'}],
+                        })(
+                            <Input className="nickName"/>
+                        )}
 
-                </FormItem> <FormItem {...formItemLayout} label="电话">
-                {getFieldDecorator('phone', {
-                    initialValue: data.phone,
-                    rules: [{required: true, message: 'Please input your phone!'}],
-                })(
-                    <Input className="phone"/>
-                )}
-            </FormItem> <FormItem {...formItemLayout} label="邮箱">
-                {
-                    getFieldDecorator('email', {
-                        initialValue: data.email,
-                        rules: [
-                            {
-                                type: 'email',
-                                required: true,
-                                message: '邮箱'
-                            }
-                        ]
-                    })(
-                        <Input className="email"/>
-                    )
-                }
-            </FormItem> <FormItem {...formItemLayout} label="地址">
-                {
-                    getFieldDecorator('address', {
-                        initialValue: data.address,
-                        rules: [
-                            {
-                                required: true,
-                                message: '地址'
-                            }
-                        ]
-                    })(
-                        <Input className="address"/>
-                    )
-                }
-            </FormItem> <FormItem {...formItemLayout} label="年龄">
-                {
-                    getFieldDecorator('age', {
-                        initialValue: data.age,
-                        rules: [
-                            {
-                                required: false,
-                                message: '年龄'
-                            }
-                        ]
-                    })(
-                        <Input className="age"/>
-                    )
-                }
-            </FormItem> <FormItem {...formItemLayout} label=" "> <Button type="primary" htmlType="submit">保存</Button>
-            </FormItem> </Form>
+                    </FormItem> <FormItem {...formItemLayout} label="电话">
+                        {getFieldDecorator('phone', {
+                            initialValue: data.phone,
+                            rules: [{required: true, message: 'Please input your phone!'}],
+                        })(
+                            <Input className="phone"/>
+                        )}
+                    </FormItem> <FormItem {...formItemLayout} label="邮箱">
+                        {
+                            getFieldDecorator('email', {
+                                initialValue: data.email,
+                                rules: [
+                                    {
+                                        type: 'email',
+                                        required: true,
+                                        message: '邮箱'
+                                    }
+                                ]
+                            })(
+                                <Input className="email"/>
+                            )
+                        }
+                    </FormItem> <FormItem {...formItemLayout} label="地址">
+                        {
+                            getFieldDecorator('address', {
+                                initialValue: data.address,
+                                rules: [
+                                    {
+                                        required: true,
+                                        message: '地址'
+                                    }
+                                ]
+                            })(
+                                <Input className="address"/>
+                            )
+                        }
+                    </FormItem> <FormItem {...formItemLayout} label="年龄">
+                        {
+                            getFieldDecorator('age', {
+                                initialValue: data.age,
+                                rules: [
+                                    {
+                                        required: false,
+                                        message: '年龄'
+                                    }
+                                ]
+                            })(
+                                <Input className="age"/>
+                            )
+                        }
+                    </FormItem> <Button type="primary" htmlType="submit" className={styles.save}>保存</Button> </Form>
 
             </div>
         )

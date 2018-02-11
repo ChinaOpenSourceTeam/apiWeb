@@ -18,7 +18,13 @@
 }
 
 .head {
-    font-weight: 700;
+    font-weight: 600;
+}
+
+.createTime {
+    margin-left: 10px;
+    font-weight: 200;
+    font-size: 12px;
 }
 
 .content {
