@@ -32,7 +32,6 @@ class AticleInfo extends React.Component {
         let _self = this;
         axios.get('/node/findAllNodes', config)
             .then(function (res) {
-                // console.log(res);
                 if (res.data.code == 0) {
                     let tagArr = _.cloneDeep(res.data.data);
                     let tagList = new Array();

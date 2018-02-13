@@ -4,6 +4,7 @@ import moment from 'moment';
 import axios from "axios";
 import { config } from "../../../utils/config";
 import { Base64 } from 'js-base64';
+import { pubFunc } from '../../../utils/pubFnc';
 
 import styles from './blogAssortContent.css';
 import { ArticleList } from '../mainPage/articleList.js';
@@ -21,7 +22,9 @@ class BlogAssortContent extends React.Component {
 
     componentDidMount() {
         let _self = this;
-        let url = `/node/${1}`
+        let tagId = pubFunc.GetQueryString('node_id');
+        console.log(tagId);
+        let url = `/node/${tagId}`;
         axios.get(url, config)
             .then(function (res) {
                 if (res.data.code == 0) {
@@ -29,6 +32,7 @@ class BlogAssortContent extends React.Component {
                         let blogList = [];
                         let contnet = '';
                         let i = 0;
+                        
                         for (i in res.data.data.blogList) {
                             res.data.data.blogList[i].content = _self.contentHtmlFormat(res.data.data.blogList[i].content);
                         }
@@ -39,6 +43,7 @@ class BlogAssortContent extends React.Component {
                 }
             })
             .catch(function (err) {
+                console.log();
                 message.error('请求失败！' + err);
             })
     }
@@ -50,7 +55,7 @@ class BlogAssortContent extends React.Component {
         content = content.replace(/[\r\n]/g, "");
         
         content = content.substr(0,120);
-        
+
         //content是后台返回的未知的一长串字符串，可能是'<p>内容<div>一个div</div></p>',也可能是'内容\r\n任何格式'
         // let reg = new RegExp('^<([^>\s]+)[^>]*>(.*?<\/\\1>)?$');
         // let format = reg.test(content); //content有可能是有格式的（带html标签），也可能无格式

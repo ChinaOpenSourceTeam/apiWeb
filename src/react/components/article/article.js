@@ -21,7 +21,6 @@ export default class Artice extends React.Component {
     componentDidMount() {
         let _self = this;
         let articleId = pubFunc.GetQueryString('uuid');
-        console.log(articleId);
         let url = `/blog/${articleId}?version=1`;
         console.log(url);
         axios.get(url, config)
@@ -50,7 +49,6 @@ export default class Artice extends React.Component {
         //     content = content && content.replace(/\n/g, "<br />");
         //     //带格式的可能含有换行的/n，要转化为<br />
         // }
-        console.log(content,66666);
         let contentHtml1 = <article id='contentHtml' className='content' dangerouslySetInnerHTML={{ __html: content }}></article>;
         let contentHtml2 = <article id='contentHtml' className='content no-fomat'>{content}</article>;
         // let contentHtml = format ? contentHtml1 : contentHtml2;
