@@ -32,7 +32,6 @@ class BlogAssortContent extends React.Component {
                         let blogList = [];
                         let contnet = '';
                         let i = 0;
-                        
                         for (i in res.data.data.blogList) {
                             res.data.data.blogList[i].content = _self.contentHtmlFormat(res.data.data.blogList[i].content);
                         }
@@ -55,16 +54,6 @@ class BlogAssortContent extends React.Component {
         content = content.replace(/[\r\n]/g, "");
         
         content = content.substr(0,120);
-
-        //content是后台返回的未知的一长串字符串，可能是'<p>内容<div>一个div</div></p>',也可能是'内容\r\n任何格式'
-        // let reg = new RegExp('^<([^>\s]+)[^>]*>(.*?<\/\\1>)?$');
-        // let format = reg.test(content); //content有可能是有格式的（带html标签），也可能无格式
-        // if (!format) {  
-        //     content = content && content.split('\n').map((item, i) => <p key={i}>{item.replace(/(^\s*)|(\s*$)/g, "")}</p>);
-        // } else {
-        //     content = content && content.replace(/\n/g, "<br />");
-        //     //带格式的可能含有换行的/n，要转化为<br />
-        // }
 
         let contentHtml1 = <article id='contentHtml' className='content' style={{ fontSize: 14, letterSpacing: 0,marginTop:0 }} dangerouslySetInnerHTML={{ __html: content }}></article>;
         let contentHtml2 = <article id='contentHtml' className='content no-fomat'>{content}</article>;
